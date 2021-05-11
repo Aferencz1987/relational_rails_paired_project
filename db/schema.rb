@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_05_11_152005) do
+=======
+ActiveRecord::Schema.define(version: 2021_05_11_023244) do
+>>>>>>> ffae81cd64afff7859b655a8640743508ce32d7c
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "guitars", force: :cascade do |t|
     t.float "price"
     t.string "model"
@@ -25,6 +30,12 @@ ActiveRecord::Schema.define(version: 2021_05_11_152005) do
     t.string "brand"
     t.integer "days_since_last_incident"
     t.boolean "domestic"
+=======
+  create_table "stores", force: :cascade do |t|
+    t.integer "distance"
+    t.string "name"
+    t.string "open"
+>>>>>>> ffae81cd64afff7859b655a8640743508ce32d7c
   end
 
 end
