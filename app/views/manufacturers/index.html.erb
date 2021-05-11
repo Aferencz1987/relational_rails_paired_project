@@ -1,0 +1,16 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width-device-width, initial-scale=1">
+</head>
+
+<h1>Our Manufacturers</h1>
+
+<% @manufacturers.each do |manu| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= manu[:brand] %></h5>
+      <p class="card-text">Built in USA?<%= manu[:domestic] %></p>
+      <a href="/manufacturers/<%= manu[:id] %>" class="btn btn-primary">More info</a>
+    </div>
+  </div>
+<% end %>
