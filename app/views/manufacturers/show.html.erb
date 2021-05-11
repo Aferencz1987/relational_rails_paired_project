@@ -1,0 +1,15 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width-device-width, initial-scale=1">
+</head>
+
+<h2><%= @manufacturer[:brand] %></h2>
+<p>
+  This manufacturer is based
+  <% if @manufacturer[:domestic] == true then %>
+    in the US.
+  <% else %>
+    overseas.
+  <% end %>
+  <%= @manufacturer[:brand] %>'s facility hasn't had a serious safety incident in <%= @manufacturer[:days_since_last_incident] %> days.
+</p>
