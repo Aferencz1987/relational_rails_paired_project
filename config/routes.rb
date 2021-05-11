@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   post '/stores', to: 'stores#create'
   get '/manufacturers', to: 'manufacturers#index'
   get '/manufacturers/:id', to: 'manufacturers#show'
+  get '/guitars', to: 'guitars#index'
 end
