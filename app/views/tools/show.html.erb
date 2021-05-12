@@ -1,0 +1,11 @@
+<h3><%= @tool.name %></h3>
+
+<ul>
+  <li> Price: $<%= @tool.price%></li>
+  <li> <% if @tool.on_sale == true %>
+    This item is on sale!
+    <% else %>
+    Sorry but this item is not on sale. Full price for you!
+    <% end %>
+  </li>
+</ul>
