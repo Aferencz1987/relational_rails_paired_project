@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   def index
-    @stores = ['Lowes', 'Home Depot', 'Ace']
+    @stores = Store.all
   end
 
   def new
@@ -16,5 +16,9 @@ class StoresController < ApplicationController
     store.save
 
     redirect_to '/stores'
+  end
+
+  def show
+    @store = Store.find(params[:id])
   end
 end
