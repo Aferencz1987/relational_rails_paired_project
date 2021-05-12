@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   def index
-    @stores = ['Lowes', 'Home Depot', 'Ace']
+    @stores = Store.all
   end
 
   def new
