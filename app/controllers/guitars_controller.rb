@@ -4,4 +4,7 @@ class GuitarsController < ApplicationController
     @guitars = Guitar.all
   end
 
+  def show
+    @guitar = Guitar.find(params[:id])
+  end
 end

@@ -1,6 +1,7 @@
 <h1>Our Guitars</h1>
 
 <% @guitars.each do |guitar| %>
-  <h3><%= guitar[:model] %>
-  </h3>
+  <h3><%= guitar[:model] %></h3>
+  <h3><%= guitar[:price] %></h3>
+  <h3><%= guitar[:sold] %></h3>
 <% end %>

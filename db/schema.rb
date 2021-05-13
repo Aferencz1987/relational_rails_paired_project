@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2021_05_13_003135) do
     t.string "brand"
     t.integer "days_since_last_incident"
     t.boolean "domestic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stores", force: :cascade do |t|
