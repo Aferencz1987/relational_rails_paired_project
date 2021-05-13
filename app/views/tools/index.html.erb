@@ -1,5 +1,9 @@
 <h2>Look at these cool tools</h2>
 
 <%@tools.each do |tool| %>
-  <ul><li><%= tool.name %></li></ul>
+<h3><%= tool.name %></h3>
+  <ul>
+    <li><%= tool.price %></li>
+    <li><%= tool.on_sale %></li>
+  </ul>
 <% end %>
