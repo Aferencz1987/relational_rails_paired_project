@@ -23,6 +23,7 @@ class StoresController < ApplicationController
   end
 
   def inventory
-
+    @store = Store.find(params[:id])
+    @tools = @store.tools
   end
 end

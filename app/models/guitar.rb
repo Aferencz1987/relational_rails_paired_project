@@ -1,3 +1,3 @@
 class Guitar < ApplicationRecord
-belongs_to :manufacturer
+  belongs_to :manufacturer
 end
