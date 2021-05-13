@@ -1,7 +1,7 @@
 <h3><%= @manufacturer.brand %>'s guitars </h3>
 
 <ul>
-  <% @guitars_sorted_by_manu_id.each do |guitar| %>
+  <% @guitars.each do |guitar| %>
   <li><%= guitar.model %></li>
   <% end %>
 </ul>
