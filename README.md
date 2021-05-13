@@ -21,4 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-[Jamo and Alex's project schema](https://app.dbdesigner.net/designer/schema/418869)
+[Jamo and Alex project schema](https://app.dbdesigner.net/designer/schema/418869)
