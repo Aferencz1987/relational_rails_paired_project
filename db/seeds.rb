@@ -20,3 +20,16 @@ fender.guitars.create(model: "Stratocaster", price: 1499.99, sold: false)
 prs.guitars.create(model: "CE Standard 24", price: 899.99,sold: false)
 prs.guitars.create(model: "Silver Sky", price: 1999.99, sold: false)
 taylor.guitars.create(model: "C214 Grand Parlor", price: 899.99, sold: false)
+
+# Stores
+ace = Store.create(name: "Ace Hardware", distance: 20, open: true)
+lowes = Store.create(name: "Lowes", distance: 18, open: true)
+guirys = Store.create(name: "Guiry's Hardware", distance: 5, open: false)
+
+# Tools
+ace.tools.create(name: "Steel Hammer", price: 25.00, on_sale: false)
+ace.tools.create(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true)
+lowes.tools.create(name: "Ladder", price: 119.00, on_sale: false)
+lowes.tools.create(name: "Table Saw", price: 159.00, on_sale: false)
+guirys.tools.create(name: "Screws", price: 1.00, on_sale: false)
+guirys.tools.create(name: "Lumber", price: 25.00, on_sale: true)
