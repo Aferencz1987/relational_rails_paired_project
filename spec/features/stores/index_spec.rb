@@ -52,6 +52,6 @@ require 'rails_helper'
 #When I click the link
 #I am returned to the Parent Index Page where I no longer see that parent
 
-RSpec.describe 'Manufacturer index page' do
+RSpec.describe 'Stores index page' do
 
 end
