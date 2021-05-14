@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_194622) do
+ActiveRecord::Schema.define(version: 2021_05_14_013256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2021_05_13_194622) do
     t.boolean "sold"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "manufacturers_id"
-    t.index ["manufacturers_id"], name: "index_guitars_on_manufacturers_id"
+    t.bigint "manufacturer_id"
+    t.index ["manufacturer_id"], name: "index_guitars_on_manufacturer_id"
   end
 
   create_table "manufacturers", force: :cascade do |t|
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 2021_05_13_194622) do
     t.boolean "on_sale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "stores_id"
-    t.index ["stores_id"], name: "index_tools_on_stores_id"
+    t.bigint "store_id"
+    t.index ["store_id"], name: "index_tools_on_store_id"
   end
 
-  add_foreign_key "guitars", "manufacturers", column: "manufacturers_id"
-  add_foreign_key "tools", "stores", column: "stores_id"
+  add_foreign_key "guitars", "manufacturers"
+  add_foreign_key "tools", "stores"
 end
