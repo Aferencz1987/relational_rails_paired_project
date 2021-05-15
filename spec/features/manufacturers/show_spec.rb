@@ -46,6 +46,8 @@ RSpec.describe 'Manufacturer info' do
     #Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
     visit '/manufacturers/' + @id
     expect(page).to have_link("Guitar Inventory")
+    click_link("Guitar Inventory")
+    expect(current_path).to eq("/manufacturers/" + @id + "/guitars")
   end
 
 #[ ] done
