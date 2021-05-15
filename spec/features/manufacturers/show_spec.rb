@@ -1,11 +1,28 @@
-#[ ] done
+require 'rails_helper'
 
-#User Story 2, Parent Show (x2)
+RSpec.describe 'Manufacturer info' do
 
-#As a visitor
-#When I visit '/parents/:id'
-#Then I see the parent with that id including the parent's attributes:
-#- data from each column that is on the parent table
+  before(:all) do
+    @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 222)
+    @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
+    @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
+  end
+
+  it 'shows manufacturer info' do
+    #[ ] done
+
+    #User Story 2, Parent Show (x2)
+
+    #As a visitor
+    #When I visit '/parents/:id'
+    #Then I see the parent with that id including the parent's attributes:
+    #- data from each column that is on the parent table
+    id = @fender.id.to_s
+    visit '/manufacturers/' + id
+
+    expect(page).to have_content("is based overseas.")
+    expect(page).to have_content("safety incident in 222 days.")
+  end
 
 #[ ] done
 
@@ -57,3 +74,4 @@
 #Then a 'DELETE' request is sent to '/parents/:id',
 #the parent is deleted, and all child records are deleted
 #and I am redirected to the parent index page where I no longer see this parent
+end
