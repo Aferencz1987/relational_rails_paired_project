@@ -6,6 +6,7 @@ class ManufacturersController < ApplicationController
 
   def show
     @manufacturer = Manufacturer.find(params[:id])
+    @num_of_guitars = @manufacturer.guitars.count
   end
 
   def inventory

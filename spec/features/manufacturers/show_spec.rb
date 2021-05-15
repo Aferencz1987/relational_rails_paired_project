@@ -6,10 +6,11 @@ RSpec.describe 'Manufacturer info' do
     @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 222)
     @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
     @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
+    @id = @fender.id.to_s
   end
 
   it 'shows manufacturer info' do
-    #[ ] done
+    #[x] done
 
     #User Story 2, Parent Show (x2)
 
@@ -17,20 +18,24 @@ RSpec.describe 'Manufacturer info' do
     #When I visit '/parents/:id'
     #Then I see the parent with that id including the parent's attributes:
     #- data from each column that is on the parent table
-    id = @fender.id.to_s
-    visit '/manufacturers/' + id
+    visit '/manufacturers/' + @id
 
     expect(page).to have_content("is based overseas.")
     expect(page).to have_content("safety incident in 222 days.")
   end
 
-#[ ] done
+  it 'contains count of its guitars' do
+    #[ ] done
 
-#User Story 7, Parent Child Count (x2)
+    #User Story 7, Parent Child Count (x2)
 
-#As a visitor
-#When I visit a parent's show page
-#I see a count of the number of children associated with this parent
+    #As a visitor
+    #When I visit a parent's show page
+    #I see a count of the number of children associated with this parent
+    visit '/manufacturers/' + @id
+
+    expect(page).to have_content("#{@fender.brand} has 2 guitars.")
+  end
 
 #[ ] done
 
