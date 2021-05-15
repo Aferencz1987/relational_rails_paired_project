@@ -1,56 +1,4 @@
 require 'rails_helper'
-#[x] done
-
-#User Story 1, Parent Index (x2)
-
-#For each parent table
-#As a visitor
-#When I visit '/parents'
-#Then I see the name of each parent record in the system
-
-#[x] done
-
-#User Story 6, Parent Index sorted by Most Recently Created (x2)
-
-#As a visitor
-#When I visit the parent index,
-#I see that records are ordered by most recently created first
-#And next to each of the records I see when it was created
-
-#[ ] done
-
-#User Story 11, Parent Creation (x2)
-
-#As a visitor
-#When I visit the Parent Index page
-#Then I see a link to create a new Parent record, "New Parent"
-#When I click this link
-#Then I am taken to '/parents/new' where I  see a form for a new parent record
-#When I fill out the form with a new parent's attributes:
-#And I click the button "Create Parent" to submit the form
-#Then a `POST` request is sent to the '/parents' route,
-#a new parent record is created,
-#and I am redirected to the Parent Index page where I see the new Parent displayed.
-
-#[ ] done
-
-#User Story 17, Parent Update From Parent Index Page (x2)
-
-#As a visitor
-#When I visit the parent index page
-#Next to every parent, I see a link to edit that parent's info
-#When I click the link
-#I should be taken to that parents edit page where I can update its information just like in User Story 4
-
-#[ ] done
-
-#User Story 22, Parent Delete From Parent Index Page (x1)
-
-#As a visitor
-#When I visit the parent index page
-#Next to every parent, I see a link to delete that parent
-#When I click the link
-#I am returned to the Parent Index Page where I no longer see that parent
 
 RSpec.describe 'Manufacturer index page' do
 
@@ -60,12 +8,28 @@ RSpec.describe 'Manufacturer index page' do
   end
 
   it 'displays manufacturers' do
+    #[x] done
+
+    #user story 1, parent index (x2)
+
+    #for each parent table
+    #as a visitor
+    #when i visit '/parents'
+    #then i see the name of each parent record in the system
     visit '/manufacturers'
     expect(page).to have_content(@fender.brand)
     expect(page).to have_content(@gibson.brand)
   end
 
   it 'sorts by date created and lists that date' do
+    #[x] done
+    #user story 6, parent index sorted by most recently created (x2)
+
+    #as a visitor
+    #when i visit the parent index,
+    #i see that records are ordered by most recently created first
+    #and next to each of the records i see when it was created
+
     # Sorted elements tested in model test
     visit '/manufacturers'
     expect(page).to have_content(@fender.created_at)
@@ -73,9 +37,45 @@ RSpec.describe 'Manufacturer index page' do
   end
 
   it 'has full create functionality' do
-    visit '/manufacturers'
+    skip "WIP"
+    #[ ] done
+
+    #user story 11, parent creation (x2)
+
+    #as a visitor
+    #when i visit the parent index page
+    #then i see a link to create a new parent record, "new parent"
+    #when i click this link
+    #then i am taken to '/parents/new' where i  see a form for a new parent record
+    #when i fill out the form with a new parent's attributes:
+    #and i click the button "create parent" to submit the form
+    #then a `post` request is sent to the '/parents' route,
+    #a new parent record is created,
+    #and i am redirected to the parent index page where i see the new parent displayed.
     expect(page).to have_link("Add a Manufacturer")
+    visit '/manufacturers'
     click_link("Add a Manufacturer")
     # Test WIP
   end
 end
+
+#[ ] done
+
+#user story 17, parent update from parent index page (x2)
+
+#as a visitor
+#when i visit the parent index page
+#next to every parent, i see a link to edit that parent's info
+#when i click the link
+#i should be taken to that parents edit page where i can update its information just like in user story 4
+
+#[ ] done
+
+#user story 22, parent delete from parent index page (x1)
+
+#as a visitor
+#When I visit the parent index page
+#Next to every parent, I see a link to delete that parent
+#When I click the link
+#I am returned to the Parent Index Page where I no longer see that parent
+

@@ -9,7 +9,7 @@ RSpec.describe 'Guitar information' do
   end
 
   it 'shows detailed information guitar' do
-    #[ ] done
+    #[x] done
 
     #User Story 4, Child Show (x2)
 
