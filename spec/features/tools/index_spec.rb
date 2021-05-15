@@ -1,4 +1,10 @@
 require 'rails_helper'
+
+RSpec.describe 'Tools index page' do
+  it 'displays name and attributes' do
+    tool = Tool.create!()
+end
+
 #[ ] done
 
 #User Story 3, Child Index (x2)
@@ -34,7 +40,3 @@ require 'rails_helper'
 #Next to every child, I see a link to delete that child
 #When I click the link
 #I should be taken to the `child_table_name` index page where I no longer see that child
-
-RSpec.describe 'Tools index page' do
-
-end

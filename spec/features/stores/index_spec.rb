@@ -1,21 +1,28 @@
 require 'rails_helper'
-#[ ] done
 
-#User Story 1, Parent Index (x2)
+RSpec.describe 'Stores index page' do
+  it 'displays store name' do
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
 
-#For each parent table
-#As a visitor
-#When I visit '/parents'
-#Then I see the name of each parent record in the system
+    visit '/stores'
 
-#[ ] done
+    expect(page).to have_content(store.name)
+  end
 
-#User Story 6, Parent Index sorted by Most Recently Created (x2)
+  it 'displays by most recently created' do
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
+    tool1 = Tool.create!(name: 'Hammer', price: 25, on_sale: false)
+    tool2 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false)
+    tool3 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true)
 
-#As a visitor
-#When I visit the parent index,
-#I see that records are ordered by most recently created first
-#And next to each of the records I see when it was created
+    visit '/stores'
+
+    expect(page).to have_content(tool1.created_at)
+    expect(page).to have_content(tool2.created_at)
+    expect(page).to have_content(tool3.created_at)
+  end
+
+end
 
 #[ ] done
 
@@ -52,6 +59,21 @@ require 'rails_helper'
 #When I click the link
 #I am returned to the Parent Index Page where I no longer see that parent
 
-RSpec.describe 'Stores index page' do
 
-end
+# [X] done
+#
+# User Story 1, Parent Index (x2)
+#
+# For each parent table
+# As a visitor
+# When I visit '/parents'
+# Then I see the name of each parent record in the system
+
+# [X] done
+#
+# User Story 6, Parent Index sorted by Most Recently Created (x2)
+#
+# As a visitor
+# When I visit the parent index,
+# I see that records are ordered by most recently created first
+# And next to each of the records I see when it was created
