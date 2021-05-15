@@ -1,0 +1,14 @@
+<h1><%= @store.name %></h1>
+
+
+  <% @tools.each do |tool| %>
+  <h3><%= tool.name %></h3>
+  <ul>
+      <li><%= tool.price %></li>
+      <li><% if tool.on_sale == true then %>
+        Yay! On sale!
+        <% else %>
+        Sorry, full price for you.
+      <% end %></li>
+  </ul>
+  <% end %>
