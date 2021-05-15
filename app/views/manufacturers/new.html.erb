@@ -1,0 +1,16 @@
+<h2>Add a New Supplier</h2>
+
+<p>Please fill out the following to create a new supplier:</p>
+<form action="/manufacturers" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Brand Name:</p>
+  <input type='text' name='brand'/><br/>
+  <p>Is this manufacturer based in the US?</p>
+  <input type="radio" id="yes" name="domestic" value= "true"><label>Yes</label><br/>
+  <input type="radio" id="no" name="domestic" value= "false"><label>No</label><br/>
+  <strong>IMPORTANT</strong>
+  <p>The answer to the following questions has legal implications if it does not contain accurate data.</p>
+  <strong>How many days has it been since the last safety incident?</strong>
+  <input type="text" name="days_since"/><br/>
+  <input type="submit" id="create"/>
+</form>

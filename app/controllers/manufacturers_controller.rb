@@ -1,5 +1,5 @@
 class ManufacturersController < ApplicationController
-
+  
   def index
     @manufacturers = Manufacturer.most_recent 
   end
@@ -13,4 +13,12 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.find(params[:id])
     @guitars = @manufacturer.guitars
   end
+
+  def new
+  end
+
+  def create
+    redirect_to '/manufacturers'
+  end
+
 end
