@@ -1,5 +1,11 @@
 <h3><%= @guitar.model %></h3>
 <ul>
-  <li><%= @guitar.price %></li>
-  <li><%= @guitar.sold %></li>
+  <li>$<%= @guitar.price %></li>
+  <li>
+    <% if @guitar.sold == false %>
+      In stock
+    <% else %>
+      Out of stock
+    <% end %>
+  </li>
 </ul>

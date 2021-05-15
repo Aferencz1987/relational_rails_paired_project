@@ -1,7 +1,14 @@
 <h3><%= @manufacturer.brand %>'s guitars </h3>
-
-<ul>
-  <% @guitars.each do |guitar| %>
-  <li><%= guitar.model %></li>
-  <% end %>
-</ul>
+<% @guitars.each do |guitar| %>
+  <h4><%= guitar.model %></h4>
+  <ul>
+    <li>
+      <% if guitar.sold == true %>
+        This guitar is sold out.
+      <% else %>
+        This guitar is available!
+      <% end %>
+    </li>
+    <li>$<%= guitar.price %></li>
+  </ul>
+<% end %>

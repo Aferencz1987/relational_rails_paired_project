@@ -1,36 +1,54 @@
-#[ ] done
+require 'rails_helper'
 
-#User Story 2, Parent Show (x2)
+RSpec.describe 'Manufacturer info' do
 
-#As a visitor
-#When I visit '/parents/:id'
-#Then I see the parent with that id including the parent's attributes:
-#- data from each column that is on the parent table
+  before(:all) do
+    @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 222)
+    @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
+    @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
+    @id = @fender.id.to_s
+  end
 
-#[ ] done
+  it 'shows manufacturer info' do
+    #[x] done
 
-#User Story 7, Parent Child Count (x2)
+    #User Story 2, Parent Show (x2)
 
-#As a visitor
-#When I visit a parent's show page
-#I see a count of the number of children associated with this parent
+    #As a visitor
+    #When I visit '/parents/:id'
+    #Then I see the parent with that id including the parent's attributes:
+    #- data from each column that is on the parent table
+    visit '/manufacturers/' + @id
 
-#[ ] done
+    expect(page).to have_content("is based overseas.")
+    expect(page).to have_content("safety incident in 222 days.")
+  end
 
-#User Story 7, Parent Child Count (x2)
+  it 'contains count of its guitars' do
+    #[x] done
 
-#As a visitor
-#When I visit a parent's show page
-#I see a count of the number of children associated with this parent
+    #User Story 7, Parent Child Count (x2)
 
-#[ ] done
+    #As a visitor
+    #When I visit a parent's show page
+    #I see a count of the number of children associated with this parent
+    visit '/manufacturers/' + @id
 
-#User Story 10, Parent Child Index Link
+    expect(page).to have_content("#{@fender.brand} has 2 guitars.")
+  end
+  
+  it 'has link to its guitars' do
+    #[#] done
+    #User Story 10, Parent Child Index Link
 
-#As a visitor
-#When I visit a parent show page ('/parents/:id')
-#Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
-
+    #As a visitor
+    #When I visit a parent show page ('/parents/:id')
+    #Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+    visit '/manufacturers/' + @id
+    expect(page).to have_link("Guitar Inventory")
+    click_link("Guitar Inventory")
+    expect(current_path).to eq("/manufacturers/" + @id + "/guitars")
+  end
 
 #[ ] done
 #User Story 12, Parent Update (x2)
@@ -57,3 +75,4 @@
 #Then a 'DELETE' request is sent to '/parents/:id',
 #the parent is deleted, and all child records are deleted
 #and I am redirected to the parent index page where I no longer see this parent
+end
