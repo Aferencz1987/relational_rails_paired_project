@@ -1,10 +1,28 @@
-#[ ] done
+require 'rails_helper'
 
-#User Story 5, Parent Children Index (x2)
+RSpec.describe 'Manufacturers guitar inventory' do
 
-#As a visitor
-#When I visit '/parents/:parent_id/child_table_name'
-#Then I see each Child that is associated with that Parent with each Child's attributes:
+  before(:all) do
+    @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 222)
+    @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
+    @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
+    @id = @fender.id.to_s
+  end
+
+  it 'shows guitars from a single manufacturer' do
+    #[ ] done
+
+    #User Story 5, Parent Children Index (x2)
+
+    #As a visitor
+    #When I visit '/parents/:parent_id/child_table_name'
+    #Then I see each Child that is associated with that Parent with each Child's attributes:
+    visit '/manufacturers/' + @id + '/guitars'
+    expect(page).to have_content("Telecaster")
+    expect(page).to have_content("$1122.99")
+    expect(page).to have_content("This guitar is available!")
+    expect(page).to have_content("This guitar is sold out.")
+  end
 
 #[ ] done
 
@@ -60,3 +78,4 @@
 #Next to every child, I see a link to delete that child
 #When I click the link
 #I should be taken to the `child_table_name` index page where I no longer see that child
+end

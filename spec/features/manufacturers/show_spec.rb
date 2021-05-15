@@ -38,7 +38,7 @@ RSpec.describe 'Manufacturer info' do
   end
   
   it 'has link to its guitars' do
-    #[ ] done
+    #[#] done
     #User Story 10, Parent Child Index Link
 
     #As a visitor
