@@ -2,8 +2,8 @@
 
 <ul>
   <li> The distance from the ol' Turing basement is <%= @store.distance %> whole miles! </li>
-  <li><% if @store.open == "true" then %>
-    <%= @store.open %>, we are open.
+  <li><% if @store.open == true then %>
+    Yeay we are open.
     <% else %>
     Sorry, we are closed.
   <% end %></li>
