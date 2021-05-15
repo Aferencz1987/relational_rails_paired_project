@@ -10,7 +10,7 @@ RSpec.describe 'Manufacturers guitar inventory' do
   end
 
   it 'shows guitars from a single manufacturer' do
-    #[ ] done
+    #[x] done
 
     #User Story 5, Parent Children Index (x2)
 
