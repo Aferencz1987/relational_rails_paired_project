@@ -1,5 +1,5 @@
 require 'rails_helper'
-#[ ] done
+#[x] done
 
 #User Story 1, Parent Index (x2)
 
@@ -54,4 +54,20 @@ require 'rails_helper'
 
 RSpec.describe 'Manufacturer index page' do
 
+  before(:all) do
+    @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 240, created_at: DateTime.now)
+    @gibson = Manufacturer.create(brand: "Gibon", domestic: true, days_since_last_incident: 455, created_at: DateTime.yesterday)
+  end
+
+  it 'displays manufacturers' do
+    visit '/manufacturers'
+    expect(page).to have_content(@fender.brand)
+    expect(page).to have_content(@gibson.brand)
+  end
+
+  it 'sorts by date created and lists that date' do
+    visit '/manufacturers'
+    within "#item-1" { @fender.name }
+    within "#item-2" { @gibson.name }
+  end
 end
