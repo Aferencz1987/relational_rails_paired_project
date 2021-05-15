@@ -25,7 +25,7 @@ RSpec.describe 'Manufacturer info' do
   end
 
   it 'contains count of its guitars' do
-    #[ ] done
+    #[x] done
 
     #User Story 7, Parent Child Count (x2)
 
@@ -36,23 +36,17 @@ RSpec.describe 'Manufacturer info' do
 
     expect(page).to have_content("#{@fender.brand} has 2 guitars.")
   end
+  
+  it 'has link to its guitars' do
+    #[ ] done
+    #User Story 10, Parent Child Index Link
 
-#[ ] done
-
-#User Story 7, Parent Child Count (x2)
-
-#As a visitor
-#When I visit a parent's show page
-#I see a count of the number of children associated with this parent
-
-#[ ] done
-
-#User Story 10, Parent Child Index Link
-
-#As a visitor
-#When I visit a parent show page ('/parents/:id')
-#Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
-
+    #As a visitor
+    #When I visit a parent show page ('/parents/:id')
+    #Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+    visit '/manufacturers/' + @id
+    expect(page).to have_link("Guitar Inventory")
+  end
 
 #[ ] done
 #User Story 12, Parent Update (x2)
