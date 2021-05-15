@@ -8,7 +8,7 @@ require 'rails_helper'
 #When I visit '/parents'
 #Then I see the name of each parent record in the system
 
-#[ ] done
+#[x] done
 
 #User Story 6, Parent Index sorted by Most Recently Created (x2)
 
@@ -66,8 +66,16 @@ RSpec.describe 'Manufacturer index page' do
   end
 
   it 'sorts by date created and lists that date' do
+    # Sorted elements tested in model test
     visit '/manufacturers'
-    within "#item-1" { @fender.name }
-    within "#item-2" { @gibson.name }
+    expect(page).to have_content(@fender.created_at)
+    expect(page).to have_content(@gibson.created_at)
+  end
+
+  it 'has full create functionality' do
+    visit '/manufacturers'
+    expect(page).to have_link("Add a Manufacturer")
+    click_link("Add a Manufacturer")
+    # Test WIP
   end
 end

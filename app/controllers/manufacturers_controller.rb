@@ -1,7 +1,7 @@
 class ManufacturersController < ApplicationController
 
   def index
-    @manufacturers = Manufacturer.order(created_at: :desc)
+    @manufacturers = Manufacturer.most_recent 
   end
 
   def show
