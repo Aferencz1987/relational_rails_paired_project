@@ -3,8 +3,8 @@
 <%@stores.created_at_order.each do |store| %>
   <h3><%= store.name %></h3>
   <h4><%= store.created_at.strftime("%A, %B %d, %Y") %></h4>
-  <a href=<%= "/stores/#{store.id}/update" %>>update</a>
-
+  <button type="button"><a href=<%= "/stores/#{store.id}/edit" %>>update</a></button>
+<br>
 <% end %>
-
-<a href="/stores/new">new store</a>
+<br>
+<h2><a href="/stores/new">new store</a></h2>

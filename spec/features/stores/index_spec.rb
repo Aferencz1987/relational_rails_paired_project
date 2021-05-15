@@ -30,11 +30,26 @@ RSpec.describe 'Stores index page' do
     expect(page).to have_link("new store")
     click_link "new store"
 
-    expect(current_path).to eq('/store/new')
-    expect(page).to have_link("submit")
-    click_link "submit"
+    expect(current_path).to eq('/stores/new')
+    expect(page).to have_link("Submit")
+    expect(page).to have_content("Enter a new store:")
+    click_link "Submit"
 
     expect(current_path).to eq('/stores')
+    expect(page).to have_content("Store directory")
+  end
+
+  it 'updates a record' do
+    store1 = Store.create!(name: 'Ace', distance: 20, open: true)
+    store2 = Store.create!(name: 'Abe', distance: 260, open: false)
+
+    visit '/stores'
+
+    expect(page).to have_link('update')
+    click_link "update"
+
+
+
   end
 end
 

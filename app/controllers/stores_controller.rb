@@ -9,7 +9,7 @@ class StoresController < ApplicationController
   def create
     store = Store.new({
       name: params[:store][:name],
-      distance: params[:store][:distance], # add .to_i back in if things break
+      distance: params[:store][:distance],
       open: params[:store][:open]
       })
 
@@ -18,8 +18,21 @@ class StoresController < ApplicationController
     redirect_to '/stores'
   end
 
-  def update
+  def edit
+    @store = Store.find(params[:id])
+  end
 
+  def update
+    @store = Store.find(params[:id])
+    @store.update({
+      name: params[:store][:name],
+      distance: params[:store][:distance],
+      open: params[:store][:open]
+      })
+
+      @store.save
+
+      redirect_to "/stores/#{@store.id}"
   end
 
   def show
