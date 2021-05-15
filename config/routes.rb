@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/stores', to: 'stores#create'
   get '/stores/:id', to: 'stores#show'
   get '/stores/:id/tools', to: 'stores#inventory'
+  get '/stores/:id/update', to: 'stores#update'
   get '/tools', to: 'tools#index'
   get '/tools/:id', to: 'tools#show'
   get '/manufacturers', to: 'manufacturers#index'

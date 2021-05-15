@@ -18,6 +18,10 @@ class StoresController < ApplicationController
     redirect_to '/stores'
   end
 
+  def update
+
+  end
+
   def show
     @store = Store.find(params[:id])
   end
