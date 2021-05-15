@@ -9,8 +9,8 @@ class StoresController < ApplicationController
   def create
     store = Store.new({
       name: params[:store][:name],
-      distance: params[:store][:distance].to_i,
-      open: params[:store][:open] #change to boolean later for example, test.eql?("true")
+      distance: params[:store][:distance], # add .to_i back in if things break
+      open: params[:store][:open]
       })
 
     store.save
