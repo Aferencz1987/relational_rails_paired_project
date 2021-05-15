@@ -59,6 +59,7 @@ RSpec.describe 'Manufacturer index page' do
     choose "no"
     fill_in "days_since", with: "141"
     click_button "create"
+    expect(page).to have_content("Ibanez")
   end
 end
 

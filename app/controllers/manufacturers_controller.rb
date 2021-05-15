@@ -18,6 +18,13 @@ class ManufacturersController < ApplicationController
   end
 
   def create
+    capitalized = params[:brand]
+    Manufacturer.create!(
+      brand: capitalized,
+      days_since_last_incident: params[:days_since],
+      domestic: params[:domestic]
+    )
+
     redirect_to '/manufacturers'
   end
 
