@@ -1,15 +1,8 @@
-<h1>Our Guitars</h1>
-
+<h1>Guitars In Stock</h1>
+<p>Our boutique shop specializes in guitars that offer the best value for experienced musicians.</p>
 <% @guitars.each do |guitar| %>
   <h4><%= guitar.model %></h4>
   <ul>
-    <li>
-      <% if guitar.sold == true %>
-        This guitar is sold out.
-      <% else %>
-        This guitar is available!
-      <% end %>
-    </li>
-    <li>$<%= guitar.price %></li>
+    <li>This guitar is available for $<%= guitar.price %></li>
   </ul>
 <% end %>

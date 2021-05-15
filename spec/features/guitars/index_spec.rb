@@ -10,8 +10,7 @@ RSpec.describe 'Guitars index page' do
   end
 
   it 'shows all guitars' do
-    # Test is skipped because new functionality makes old test obsolete
-    skip
+    skip 'new functionality makes old test obsolete'
     #[x] done
 
     #User Story 3, Child Index (x2)
@@ -27,7 +26,7 @@ RSpec.describe 'Guitars index page' do
   it 'only shows guitars in stock' do
     # NOTE: original prompt wanted true, but false makes more sense
     #in the context of our site.
-    #[ ] done
+    #[x] done
 
     #User Story 15, Child Index only shows `false` Records (x2)
 
