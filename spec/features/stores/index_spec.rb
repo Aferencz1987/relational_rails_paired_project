@@ -1,21 +1,42 @@
 require 'rails_helper'
-#[ ] done
 
-#User Story 1, Parent Index (x2)
+RSpec.describe 'Stores index page' do
+  it 'displays store name' do
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
 
-#For each parent table
-#As a visitor
-#When I visit '/parents'
-#Then I see the name of each parent record in the system
+    visit '/stores'
 
-#[ ] done
+    expect(page).to have_content(store.name)
+  end
 
-#User Story 6, Parent Index sorted by Most Recently Created (x2)
+  it 'diplays when it was created' do
+    store1 = Store.create!(name: 'Ace', distance: 20, open: true)
+    store2 = Store.create!(name: 'Abe', distance: 260, open: false)
+    store3 = Store.create!(name: 'Ale', distance: 90, open: true)
 
-#As a visitor
-#When I visit the parent index,
-#I see that records are ordered by most recently created first
-#And next to each of the records I see when it was created
+    visit '/stores'
+
+    expect(page).to have_content(store1.created_at.strftime("%A, %B %d, %Y"))
+    expect(page).to have_content(store2.created_at.strftime("%A, %B %d, %Y"))
+    expect(page).to have_content(store3.created_at.strftime("%A, %B %d, %Y"))
+  end
+
+  it 'creates a new record' do
+    store1 = Store.create!(name: 'Ace', distance: 20, open: true)
+    store2 = Store.create!(name: 'Abe', distance: 260, open: false)
+
+    visit '/stores'
+
+    expect(page).to have_link("new store")
+    click_link "new store"
+
+    expect(current_path).to eq('/store/new')
+    expect(page).to have_link("submit")
+    click_link "submit"
+
+    expect(current_path).to eq('/stores')
+  end
+end
 
 #[ ] done
 
@@ -52,6 +73,21 @@ require 'rails_helper'
 #When I click the link
 #I am returned to the Parent Index Page where I no longer see that parent
 
-RSpec.describe 'Stores index page' do
 
-end
+# [X] done
+#
+# User Story 1, Parent Index (x2)
+#
+# For each parent table
+# As a visitor
+# When I visit '/parents'
+# Then I see the name of each parent record in the system
+
+# [X] done
+#
+# User Story 6, Parent Index sorted by Most Recently Created (x2)
+#
+# As a visitor
+# When I visit the parent index,
+# I see that records are ordered by most recently created first
+# And next to each of the records I see when it was created
