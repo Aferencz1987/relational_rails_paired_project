@@ -47,9 +47,6 @@ RSpec.describe 'Stores index page' do
 
     expect(page).to have_link('update')
     click_link "update"
-
-
-
   end
 end
 

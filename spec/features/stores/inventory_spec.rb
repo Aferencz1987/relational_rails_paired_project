@@ -1,10 +1,25 @@
-#[ ] done
+require 'rails_helper'
 
-#User Story 5, Parent Children Index (x2)
+RSpec.describe 'inventory page' do
+  it 'shows tools her store' do
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
+    tool1 = create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
+    tool2 = create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
 
-#As a visitor
-#When I visit '/parents/:parent_id/child_table_name'
-#Then I see each Child that is associated with that Parent with each Child's attributes:
+    visit "/stores/#{store.id}/tools"
+
+    expect(page).to have_content(tool1.name)
+    expect(page).to have_content(tool1.distance)
+    expect(page).to have_content("Sorry, full price for you.")
+    expect(page).to have_content(tool2.name)
+    expect(page).to have_content(tool2.distance)
+    expect(page).to have_content("Yay! On sale!")
+  end
+
+
+end
+
+
 
 #[ ] done
 
@@ -60,3 +75,11 @@
 #Next to every child, I see a link to delete that child
 #When I click the link
 #I should be taken to the `child_table_name` index page where I no longer see that child
+
+#[x] done
+
+#User Story 5, Parent Children Index (x2)
+
+#As a visitor
+#When I visit '/parents/:parent_id/child_table_name'
+#Then I see each Child that is associated with that Parent with each Child's attributes:

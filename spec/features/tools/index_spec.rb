@@ -1,8 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe 'Tools index page' do
-  it 'displays name and attributes' do
-    tool = Tool.create!()
+  it 'displays names and attributes' do
+    tool1 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false)
+    tool2 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true)
+
+    visit "/tools"
+
+    expect(page).to have_content(tool1.name)
+    expect(page).to have_content(tool1.price)
+    expect(page).to have_content(tool1.on_sale)
+    expect(page).to have_content(tool2.name)
+    expect(page).to have_content(tool2.price)
+    expect(page).to have_content(tool2.on_sale)
+  end
 end
 
 #[ ] done
