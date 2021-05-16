@@ -11,8 +11,12 @@ Rails.application.routes.draw do
   get '/tools', to: 'tools#index'
   get '/tools/:id', to: 'tools#show'
   get '/manufacturers', to: 'manufacturers#index'
+  get '/manufacturers/new', to: 'manufacturers#new'
   get '/manufacturers/:id', to: 'manufacturers#show'
   get '/manufacturers/:id/guitars', to: 'manufacturers#inventory'
+  get '/manufacturers/:id/guitars/new', to: 'manufacturers#new_guitar'
+  post '/manufacturers/:id/guitars', to: 'manufacturers#create_guitar'
+  post '/manufacturers/', to: 'manufacturers#create'
   get '/guitars', to: 'guitars#index'
   get '/guitars/:id', to: 'guitars#show'
 end

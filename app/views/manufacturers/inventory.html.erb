@@ -1,4 +1,5 @@
 <h3><%= @manufacturer.brand %>'s guitars </h3>
+<strong><a href= <%= url_for(action: 'new_guitar', controller: 'manufacturers') %> >Add Guitar</a></strong>
 <% @guitars.each do |guitar| %>
   <h4><%= guitar.model %></h4>
   <ul>

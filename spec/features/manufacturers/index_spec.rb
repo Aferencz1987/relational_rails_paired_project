@@ -37,8 +37,7 @@ RSpec.describe 'Manufacturer index page' do
   end
 
   it 'has full create functionality' do
-    skip "WIP"
-    #[ ] done
+    #[x] done
 
     #user story 11, parent creation (x2)
 
@@ -52,10 +51,15 @@ RSpec.describe 'Manufacturer index page' do
     #then a `post` request is sent to the '/parents' route,
     #a new parent record is created,
     #and i am redirected to the parent index page where i see the new parent displayed.
-    expect(page).to have_link("Add a Manufacturer")
     visit '/manufacturers'
-    click_link("Add a Manufacturer")
-    # Test WIP
+    expect(page).to have_link("New Supplier")
+    click_link("New Supplier")
+    expect(current_path).to eq '/manufacturers/new'
+    fill_in "brand", with: "Ibanez"
+    choose "no"
+    fill_in "days_since", with: "141"
+    click_button "create"
+    expect(page).to have_content("Ibanez")
   end
 end
 

@@ -3,8 +3,9 @@
   <meta name="viewport" content="width-device-width, initial-scale=1">
 </head>
 
-<h1>Our Manufacturers</h1>
-
+<h1>Our Suppliers</h1>
+<p>We create long-lasting partnerships with each of our guitar manufacturers.</p>
+<a href= <%=url_for(action: 'new', controller: 'manufacturers')%> >New Supplier</a>
 <% @manufacturers.each do |manu| %>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
