@@ -24,20 +24,32 @@ RSpec.describe 'Manufacturers guitar inventory' do
     expect(page).to have_content("This guitar is sold out.")
   end
 
-#[ ] done
+  it 'can create a brand\'s own guitar' do
+    #[ ] done
 
-#User Story 13, Parent Child Creation (x2)
+    #User Story 13, Parent Child Creation (x2)
 
-#As a visitor
-#When I visit a Parent Childs Index page
-#Then I see a link to add a new adoptable child for that parent "Create Child"
-#When I click the link
-#I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
-#When I fill in the form with the child's attributes:
-#And I click the button "Create Child"
-#Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
-#a new child object/row is created for that parent,
-#and I am redirected to the Parent Childs Index page where I can see the new child listed
+    #As a visitor
+    #When I visit a Parent Childs Index page
+    #Then I see a link to add a new adoptable child for that parent "Create Child"
+    #When I click the link
+    #I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
+    #When I fill in the form with the child's attributes:
+    #And I click the button "Create Child"
+    #Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
+    #a new child object/row is created for that parent,
+    #and I am redirected to the Parent Childs Index page where I can see the new child listed
+    full_path = '/manufacturers/' + @id + '/guitars'
+    visit full_path
+    expect(page).to have_link("Add Guitar")
+    click_link("Add Guitar")
+    expect(current_path).to eq "#{full_path}/new"
+    fill_in "model", with: "Special Strat"
+    choose "no"
+    fill_in "price", with: "1599.99"
+    click_button "create"
+    expect(page).to have_content("Special Strat")
+  end
 
 #[ ] done
 

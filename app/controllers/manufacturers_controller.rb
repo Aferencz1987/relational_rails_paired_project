@@ -28,4 +28,20 @@ class ManufacturersController < ApplicationController
     redirect_to '/manufacturers'
   end
 
+  def new_guitar
+    @manufacturer = Manufacturer.select(:brand).where(id: params[:id]).first
+  end
+
+  def create_guitar
+    manufacturer = Manufacturer.find(params[:id])
+    capitalized = params[:model]
+    manufacturer.guitars.create!(
+      model: capitalized,
+      sold: params[:sold],
+      price: params[:price]
+    )
+
+    redirect_to "/manufacturers/#{manufacturer.id}/guitars"
+  end
+
 end

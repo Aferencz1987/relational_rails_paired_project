@@ -37,7 +37,7 @@ RSpec.describe 'Manufacturer index page' do
   end
 
   it 'has full create functionality' do
-    #[ ] done
+    #[x] done
 
     #user story 11, parent creation (x2)
 
