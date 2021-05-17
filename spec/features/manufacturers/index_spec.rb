@@ -75,6 +75,14 @@ RSpec.describe 'Manufacturer index page' do
     visit '/manufacturers'
     click_on "edit-#{@gibson.id}"
     expect(current_path).to eq "/manufacturers/#{@gibson.id}/edit"
+    fill_in "brand", with: "Gibson"
+    choose "domestic_false"
+    fill_in "days_since", with: "321"
+    #save_and_open_page
+    click_button "Update Manufacturer"
+    expect(current_path).to eq '/manufacturers'
+    expect(page).to have_content "Gibson"
+    expect(page).not_to have_content "Gibon"
   end
 
 #[ ] done

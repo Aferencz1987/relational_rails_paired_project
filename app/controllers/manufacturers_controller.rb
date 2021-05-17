@@ -44,4 +44,12 @@ class ManufacturersController < ApplicationController
     redirect_to "/manufacturers/#{manufacturer.id}/guitars"
   end
 
+  def edit
+    @manufacturer = Manufacturer.find(params[:id])
+  end
+
+  def update
+    redirect_to "/manufacturers"
+  end
+
 end
