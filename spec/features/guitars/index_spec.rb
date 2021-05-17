@@ -41,7 +41,7 @@ RSpec.describe 'Guitars index page' do
   end
 
   it 'can update a guitar\'s attributes' do
-    #[ ] done
+    #[x] done
 
     #User Story 18, Child Update From Childs Index Page (x1)
 
