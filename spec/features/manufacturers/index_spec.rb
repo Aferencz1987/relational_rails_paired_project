@@ -61,17 +61,21 @@ RSpec.describe 'Manufacturer index page' do
     click_button "create"
     expect(page).to have_content("Ibanez")
   end
-end
 
-#[ ] done
+  it 'can update a manufacturer record' do
+    #[ ] done
 
-#user story 17, parent update from parent index page (x2)
+    #user story 17, parent update from parent index page (x2)
 
-#as a visitor
-#when i visit the parent index page
-#next to every parent, i see a link to edit that parent's info
-#when i click the link
-#i should be taken to that parents edit page where i can update its information just like in user story 4
+    #as a visitor
+    #when i visit the parent index page
+    #next to every parent, i see a link to edit that parent's info
+    #when i click the link
+    #i should be taken to that parents edit page where i can update its information just like in user story 4
+    visit '/manufacturers'
+    click_on "edit-#{@gibson.id}"
+    expect(current_path).to eq "/manufacturers/#{@gibson.id}/edit"
+  end
 
 #[ ] done
 
@@ -82,4 +86,5 @@ end
 #Next to every parent, I see a link to delete that parent
 #When I click the link
 #I am returned to the Parent Index Page where I no longer see that parent
+end
 
