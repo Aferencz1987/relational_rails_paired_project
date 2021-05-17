@@ -25,7 +25,7 @@ RSpec.describe 'Manufacturers guitar inventory' do
   end
 
   it 'can create a brand\'s own guitar' do
-    #[ ] done
+    #[x] done
 
     #User Story 13, Parent Child Creation (x2)
 

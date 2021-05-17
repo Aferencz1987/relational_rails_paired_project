@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   patch '/manufacturers/:id', to: 'manufacturers#update'
   get '/guitars', to: 'guitars#index'
   get '/guitars/:id', to: 'guitars#show'
+  get '/guitars/:id/edit', to: 'guitars#edit'
+  patch '/guitars/:id', to: 'guitars#create'
 end

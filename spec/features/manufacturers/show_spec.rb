@@ -51,7 +51,7 @@ RSpec.describe 'Manufacturer info' do
   end
 
   it 'can update it\'s record in the db' do
-    #[ ] done
+    #[x] done
     #User Story 12, Parent Update (x2)
 
     #As a visitor
