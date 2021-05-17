@@ -4,8 +4,8 @@ RSpec.describe 'Manufacturers guitar inventory' do
 
   before(:all) do
     @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 222)
-    @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
-    @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
+    @tele = @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
+    @strat = @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
     @id = @fender.id.to_s
   end
 
@@ -51,15 +51,19 @@ RSpec.describe 'Manufacturers guitar inventory' do
     expect(page).to have_content("Special Strat")
   end
 
-#[ ] done
+  it 'sorts guitars by alphabetical order' do
+    #[x] done
+    #User Story 16, Sort Parent's Children in Alphabetical Order by name (x2)
 
-#User Story 16, Sort Parent's Children in Alphabetical Order by name (x2)
-
-#As a visitor
-#When I visit the Parent's children Index Page
-#Then I see a link to sort children in alphabetical order
-#When I click on the link
-#I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+    #As a visitor
+    #When I visit the Parent's children Index Page
+    #Then I see a link to sort children in alphabetical order
+    #When I click on the link
+    #I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+    visit "/manufacturers/#{@id}/guitars"
+    click_link "Sort Alphabetically"
+    expect(@strat.model).to appear_before(@tele.model)
+  end
 
 #[ ] done
 

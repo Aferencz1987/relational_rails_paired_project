@@ -11,7 +11,11 @@ class ManufacturersController < ApplicationController
 
   def inventory
     @manufacturer = Manufacturer.find(params[:id])
-    @guitars = @manufacturer.guitars
+    if params[:sort] == "alpha"
+      @guitars = @manufacturer.guitars.order(:model)
+    else
+      @guitars = @manufacturer.guitars
+    end
   end
 
   def new
