@@ -11,7 +11,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= manu[:brand] %></h5>
       <p class="card-text">Created at: <%= manu[:created_at] %></p>
-      <a href="/manufacturers/<%= manu[:id] %>" class="btn btn-primary">More info</a>
+      <a href="/manufacturers/<%= manu[:id] %>/edit" id="edit-<%= manu[:id]%>" class="btn btn-primary">Update <%= manu.brand %></a>
     </div>
   </div>
 <% end %>

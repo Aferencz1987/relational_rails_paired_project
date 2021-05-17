@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/manufacturers/:id/guitars/new', to: 'manufacturers#new_guitar'
   post '/manufacturers/:id/guitars', to: 'manufacturers#create_guitar'
   post '/manufacturers/', to: 'manufacturers#create'
+  get '/manufacturers/:id/edit', to: 'manufacturers#edit'
+  patch '/manufacturers/:id', to: 'manufacturers#update'
   get '/guitars', to: 'guitars#index'
   get '/guitars/:id', to: 'guitars#show'
 end

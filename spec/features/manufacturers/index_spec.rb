@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Manufacturer index page' do
 
   before(:all) do
+    Guitar.destroy_all
+    Manufacturer.destroy_all
     @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 240, created_at: DateTime.now)
     @gibson = Manufacturer.create(brand: "Gibon", domestic: true, days_since_last_incident: 455, created_at: DateTime.yesterday)
   end
@@ -61,17 +63,28 @@ RSpec.describe 'Manufacturer index page' do
     click_button "create"
     expect(page).to have_content("Ibanez")
   end
-end
 
-#[ ] done
+  it 'can update a manufacturer record' do
+    #[x] done
 
-#user story 17, parent update from parent index page (x2)
+    #user story 17, parent update from parent index page (x2)
 
-#as a visitor
-#when i visit the parent index page
-#next to every parent, i see a link to edit that parent's info
-#when i click the link
-#i should be taken to that parents edit page where i can update its information just like in user story 4
+    #as a visitor
+    #when i visit the parent index page
+    #next to every parent, i see a link to edit that parent's info
+    #when i click the link
+    #i should be taken to that parents edit page where i can update its information just like in user story 4
+    visit '/manufacturers'
+    click_on "edit-#{@gibson.id}"
+    expect(current_path).to eq "/manufacturers/#{@gibson.id}/edit"
+    fill_in "brand", with: "Gibson"
+    choose "domestic_false"
+    fill_in "days_since", with: "321"
+    click_button "Update Manufacturer"
+    expect(current_path).to eq '/manufacturers'
+    expect(page).to have_content "Gibson"
+    expect(page).not_to have_content "Gibon"
+  end
 
 #[ ] done
 
@@ -82,4 +95,5 @@ end
 #Next to every parent, I see a link to delete that parent
 #When I click the link
 #I am returned to the Parent Index Page where I no longer see that parent
+end
 

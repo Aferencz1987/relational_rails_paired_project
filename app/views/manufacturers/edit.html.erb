@@ -1,0 +1,16 @@
+<h3>Edit <%= @manufacturer.brand %></h3>
+
+<%= form_with url: "/manufacturers/#{@manufacturer.id}", method: :patch, local: true do |form| %>
+  <%= form.label :brand %>
+  <%= form.text_field :brand %><br>
+  <%= form.label "Where does this brand manufacture guitars?" %><br>
+  <%= form.label :domestic, "United States" %>
+  <%= form.radio_button :domestic, true %><br>
+  <%= form.label :domestic, "Internationally" %>
+  <%= form.radio_button :domestic, false %><br>
+  <%= form.label :days_since, "How many days since last safety incident?" %>
+  <%= form.text_field :days_since %><br>
+  <%= form.submit 'Update Manufacturer' %>
+<% end %>
+
+
