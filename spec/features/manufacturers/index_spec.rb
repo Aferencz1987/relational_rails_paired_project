@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Manufacturer index page' do
 
   before(:all) do
+    Guitar.destroy_all
+    Manufacturer.destroy_all
     @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 240, created_at: DateTime.now)
     @gibson = Manufacturer.create(brand: "Gibon", domestic: true, days_since_last_incident: 455, created_at: DateTime.yesterday)
   end
@@ -63,7 +65,7 @@ RSpec.describe 'Manufacturer index page' do
   end
 
   it 'can update a manufacturer record' do
-    #[ ] done
+    #[x] done
 
     #user story 17, parent update from parent index page (x2)
 
@@ -78,7 +80,6 @@ RSpec.describe 'Manufacturer index page' do
     fill_in "brand", with: "Gibson"
     choose "domestic_false"
     fill_in "days_since", with: "321"
-    #save_and_open_page
     click_button "Update Manufacturer"
     expect(current_path).to eq '/manufacturers'
     expect(page).to have_content "Gibson"

@@ -49,6 +49,12 @@ class ManufacturersController < ApplicationController
   end
 
   def update
+    manufacturer = Manufacturer.find(params[:id])
+    manufacturer.update(
+      brand: params[:brand],
+      domestic: params[:domestic],
+      days_since_last_incident: params[:days_since]
+    )
     redirect_to "/manufacturers"
   end
 
