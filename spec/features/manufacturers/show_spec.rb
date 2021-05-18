@@ -79,7 +79,7 @@ RSpec.describe 'Manufacturer info' do
   end
 
   it 'deletes a manufacturer' do
-    #[ ] done
+    #[x] done
 
     #User Story 19, Parent Delete (x2)
 
