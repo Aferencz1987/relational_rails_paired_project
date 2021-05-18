@@ -20,4 +20,5 @@
     <li>$<%= guitar.price %></li>
   </ul>
   <a href="/guitars/<%= guitar.id %>/edit" id="edit-<%= guitar.id%>" class="btn btn-primary">Update Guitar></a>
+  <%= link_to "Delete", "/guitars/?id=#{guitar.id}&supplier=#{@manufacturer.id}", method: :delete, id: "delete-#{guitar.id}" %>
 <% end %>

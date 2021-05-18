@@ -11,10 +11,7 @@ class ManufacturersController < ApplicationController
 
   def inventory
     @manufacturer = Manufacturer.find(params[:id])
-    if params[:sort] && params[:price_filter]
-      limit = params[:price_filter].to_i
-      @guitars = @manufacturer.guitars.over_price(limit).order(:model)
-    elsif params[:sort]
+    if params[:sort]
       @guitars = @manufacturer.guitars.order(:model)
     elsif params[:price_filter]
       limit = params[:price_filter].to_i
@@ -73,4 +70,5 @@ class ManufacturersController < ApplicationController
     manufacturer.destroy
     redirect_to '/manufacturers'
   end
+
 end
