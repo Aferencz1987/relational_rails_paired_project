@@ -1,0 +1,16 @@
+<h3>Edit <%= @guitar.model %></h3>
+
+<%= form_with url: "/guitars/#{@guitar.id}", method: :patch, local: true do |form| %>
+  <%= form.label :model %>
+  <%= form.text_field :model %><br>
+  <%= form.label "Is this model sold out?" %><br>
+  <%= form.label :sold, "Yes" %>
+  <%= form.radio_button :sold, true %><br>
+  <%= form.label :sold, "No" %>
+  <%= form.radio_button :sold, false %><br>
+  <%= form.label :price %>
+  <%= form.text_field :price %><br>
+  <%= form.submit 'Update Guitar' %>
+<% end %>
+
+

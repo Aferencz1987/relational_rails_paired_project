@@ -12,6 +12,13 @@ class ManufacturersController < ApplicationController
   def inventory
     @manufacturer = Manufacturer.find(params[:id])
     @guitars = @manufacturer.guitars
+    if params[:sort]
+      @guitars = @manufacturer.guitars.order(:model)
+    end
+    if params[:price_filter]
+      limit = params[:price_filter].to_i
+      @guitars = @manufacturer.over_price(limit)
+    end
   end
 
   def new
