@@ -11,8 +11,15 @@
   <h3><a href=<%="/stores/#{store.id}/tools"%>><%= store.name %></a></h3>
   <p><%= store.created_at.strftime("%A, %B %d, %Y") %></p>
   <button type="button"><a href=<%= "/stores/#{store.id}/edit" %>>update</a></button>
-<br>
+  <form action="/store/<%= store.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
+  </form>
 <br>
 <% end %>
 <br>
 <h4><a href="/stores/new">new store</a></h4>
+
+
+<% end %>

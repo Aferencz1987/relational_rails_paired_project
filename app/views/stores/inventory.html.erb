@@ -1,8 +1,8 @@
 <div class="text-right">
-  <button type="button" class="btn btn-primary" style="float: right;"><a href="/tools">Tool list</a></button>
+  <button type="button" class="btn btn-danger" style="float: right;"><a href="/tools">Tool list</a></button>
 </div>
 <div class="text-right">
-  <button type="button" class="btn btn-primary" style="float: right;"><a href="/stores">Store list</a></button>
+  <button type="button" class="btn btn-danger" style="float: right;"><a href="/stores">Store list</a></button>
 </div>
 
 <h1><%= @store.name %>!!!</h1>
@@ -18,3 +18,6 @@
       <% end %></li>
   </ul>
   <% end %>
+
+
+<a href=<%= "/stores/#{@store.id}/tools/new"%>>Add new tool</a>
