@@ -49,6 +49,14 @@ RSpec.describe 'Stores index page' do
     expect(page).to have_link("update #{store1.name}")
     click_link "update #{store1.name}"
     expect(current_path).to eq "/stores/#{store1.id}/edit"
+    fill_in "store[name]", with: "MY aWeSOmE STORE"
+    fill_in "store[distance]", with: "5"
+    choose "closed"
+    click_button "update"
+    expect(current_path).to eq "/stores"
+    expect(page).to have_content("MY aWeSOmE STORE")
+    expect(page).not_to have_content("Ace")
+    save_and_open_page
   end
 
   it 'deletes stores from the index' do
@@ -59,7 +67,7 @@ RSpec.describe 'Stores index page' do
 
     expect(page).to have_link("delete #{store2.name}")
     click_link("delete #{store2.name}")
-    expect(current_path).to eq "/stores/"
+    expect(current_path).to eq "/stores"
   end
 end
 

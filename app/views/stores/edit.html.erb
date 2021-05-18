@@ -1,15 +1,15 @@
 <form action="/stores/<%= @store.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
-  <p>Update store</p>
+  <h3>Update store</h3>
   <p>Store name:</p>
   <input type='text' name='store[name]' value="<%= @store.name %>"/><br/>
   <p>Distance from "The Turing Basment":</p>
   <input type='text' name='store[distance]' value="<%= @store.distance %>"/><br/>
   <p>Open or closed?:</p>
-  <input type="radio" name='store[open]' value="true"/><br/>
+  <input type="radio" name='store[open]' id= "open" value="true"/><br/>
   <label for='store[open]'>Open</label><br/><br/>
-  <input type="radio" name='store[open]' value="false"/><br/>
+  <input type="radio" name='store[open]' id= "closed" value="false"/><br/>
   <label for='store[open]'>Closed</label><br/><br/>
-  <input type='submit'/>
+  <input type='submit' id="update"/>
 </form>

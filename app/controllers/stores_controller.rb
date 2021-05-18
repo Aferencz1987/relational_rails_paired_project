@@ -43,7 +43,7 @@ class StoresController < ApplicationController
 
       @store.save
 
-      redirect_to "/stores/#{@store.id}"
+      redirect_to "/stores"
   end
 
   def show
@@ -56,8 +56,15 @@ class StoresController < ApplicationController
   end
 
   def destroy
-    Store.find(params[:id])
-
+    destroy_tool
+    Store.destroy(params[:id])
+    # Tool.destroy where: params[:store_id]
     redirect_to "/stores"
+  end
+
+  def destroy_tool
+    Tool.destroy(params[:id])
+
+    redirect_to "/stores/#{store.id}"
   end
 end
