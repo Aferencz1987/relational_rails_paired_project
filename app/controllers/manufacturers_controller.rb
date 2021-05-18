@@ -65,4 +65,10 @@ class ManufacturersController < ApplicationController
     redirect_to "/manufacturers"
   end
 
+  def delete
+    manufacturer = Manufacturer.find(params[:id])
+    manufacturer.guitars.destroy_all
+    manufacturer.destroy
+    redirect_to '/manufacturers'
+  end
 end

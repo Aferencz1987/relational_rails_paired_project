@@ -15,3 +15,6 @@
 </p>
 <h4>Buy now! <%= @manufacturer.brand %> has <%= @num_of_guitars %> guitars.</h4>
 <a href="<%= url_for(action: 'inventory', controller: 'manufacturers') %>">Guitar Inventory</a>
+
+<h3>Danger Zone</h3>
+<%= link_to "Delete Supplier", "/manufacturers/#{@manufacturer.id}", method: :delete %>
