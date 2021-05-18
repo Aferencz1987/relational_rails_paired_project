@@ -1,5 +1,5 @@
 class Manufacturer < ApplicationRecord
-  has_many :guitars
+  has_many :guitars, dependent: :destroy
 
   def self.most_recent
     self.order(created_at: :desc)
