@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Manufacturer info' do
 
   before(:all) do
-    @fender = Manufacturer.create(brand: "Fender", domestic: false, days_since_last_incident: 222)
+    @fender = Manufacturer.create(brand: "FENDER", domestic: false, days_since_last_incident: 222)
     @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
     @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
     @id = @fender.id.to_s
@@ -50,19 +50,31 @@ RSpec.describe 'Manufacturer info' do
     expect(current_path).to eq("/manufacturers/" + @id + "/guitars")
   end
 
-#[ ] done
-#User Story 12, Parent Update (x2)
+  it 'can update it\'s record in the db' do
+    #[x] done
+    #User Story 12, Parent Update (x2)
 
-#As a visitor
-#When I visit a parent show page
-#Then I see a link to update the parent "Update Parent"
-#When I click the link "Update Parent"
-#Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
-#When I fill out the form with updated information
-#And I click the button to submit the form
-#Then a `PATCH` request is sent to '/parents/:id',
-#the parent's info is updated,
-#and I am redirected to the Parent's Show page where I see the parent's updated info
+    #As a visitor
+    #When I visit a parent show page
+    #Then I see a link to update the parent "Update Parent"
+    #When I click the link "Update Parent"
+    #Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
+    #When I fill out the form with updated information
+    #And I click the button to submit the form
+    #Then a `PATCH` request is sent to '/parents/:id',
+    #the parent's info is updated,
+    #and I am redirected to the Parent's Show page where I see the parent's updated info
+    visit "/manufacturers/#{@fender.id}"
+    click_on "Update #{@fender.brand}"
+    expect(current_path).to eq "/manufacturers/#{@fender.id}/edit"
+    fill_in "brand", with: "Fender Elite"
+    choose "domestic_false"
+    fill_in "days_since", with: "321"
+    click_button "Update Manufacturer"
+    expect(current_path).to eq '/manufacturers'
+    expect(page).to have_content "Fender Elite"
+    expect(page).not_to have_content "FENDER"
+  end
 
 #[ ] done
 

@@ -5,4 +5,8 @@ class Manufacturer < ApplicationRecord
     self.order(created_at: :desc)
   end
 
+  def over_price(limit)
+    self.guitars.where("price > #{limit}")
+  end
+
 end

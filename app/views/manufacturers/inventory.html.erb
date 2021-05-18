@@ -1,5 +1,12 @@
 <h3><%= @manufacturer.brand %>'s guitars </h3>
-<strong><a href= <%= url_for(action: 'new_guitar', controller: 'manufacturers') %> >Add Guitar</a></strong>
+<strong><a href= <%= url_for(action: 'new_guitar', controller: 'manufacturers') %> >Add Guitar</a></strong><br>
+<%= link_to "Sort Alphabetically", "/manufacturers/#{@manufacturer.id}/guitars/?sort=alpha" %>
+
+<%= form_with url: "/manufacturers/#{@manufacturer.id}/guitars", method: :get, local: true do |form| %>
+  <%= form.number_field :price_filter %>
+  <%= form.submit "Only return records more expensive"%>
+<% end %>
+
 <% @guitars.each do |guitar| %>
   <h4><%= guitar.model %></h4>
   <ul>
@@ -12,4 +19,5 @@
     </li>
     <li>$<%= guitar.price %></li>
   </ul>
+  <a href="/guitars/<%= guitar.id %>/edit" id="edit-<%= guitar.id%>" class="btn btn-primary">Update Guitar></a>
 <% end %>
