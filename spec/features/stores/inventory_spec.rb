@@ -52,24 +52,20 @@ RSpec.describe 'inventory page' do
 
   end
 
-  it 'updates tools from tool index'
+  it 'updates tools from tool index' do
     store = Store.create!(name: 'Ace', distance: 20, open: true)
     tool1 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
     tool2 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
 
     visit "/stores/#{store.id}/tools"
+    expect(page).to have_button("update tool")
+    click_button "update tool"
+    expect(current_path).to eq("/tools/edit")
 
 
+
+  end
 end
-#User Story 16, Sort Parent's Children in Alphabetical Order by name (x2)
-
-#As a visitor
-#When I visit the Parent's children Index Page
-#Then I see a link to sort children in alphabetical order
-#When I click on the link
-#I'm taken back to the Parent's children Index Page where
-# I see all of the parent's children in alphabetical order
-
 #[ ] done
 
 #User Story 18, Child Update From Childs Index Page (x1)
@@ -81,6 +77,14 @@ end
 #When I click the link
 #I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
 
+#User Story 16, Sort Parent's Children in Alphabetical Order by name (x2)
+
+#As a visitor
+#When I visit the Parent's children Index Page
+#Then I see a link to sort children in alphabetical order
+#When I click on the link
+#I'm taken back to the Parent's children Index Page where
+# I see all of the parent's children in alphabetical order
 #[ ] done
 
 #User Story 21, Display Records Over a Given Threshold (x2)

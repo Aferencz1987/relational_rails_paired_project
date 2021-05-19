@@ -10,9 +10,8 @@ Rails.application.routes.draw do
   patch '/stores/:id', to: 'stores#update'
   get '/tools', to: 'tools#index'
   get '/tools/:id', to: 'tools#show'
-  # get 'stores/:id/tools/edit', to: 'tools#edit'
-  # patch '/stores/:id/tools', to: 'tools#update'
-
+  get 'stores/:id/tools/edit', to: 'tools#edit'
+  patch '/stores/:id/tools', to: 'tools#update'
   get '/stores/:id/tools/new', to: 'stores#new_tool'
   post '/stores/:id/tools', to: 'stores#create_tool'
   delete '/stores/:id', to: 'stores#destroy'

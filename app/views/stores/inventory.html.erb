@@ -17,8 +17,9 @@
         Sorry, full price for you.
       <% end %></li>
   </ul>
- <a href=""
+  <a href=<%= "/stores/#{@store.id}/tools/edit"%>>update <%= tool.name %></a>
   <% end %>
-
+<br>
+<br>
 
 <a href=<%= "/stores/#{@store.id}/tools/new"%>>Add new tool</a>
