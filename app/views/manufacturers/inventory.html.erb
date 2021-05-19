@@ -7,17 +7,25 @@
   <%= form.submit "Only return records more expensive"%>
 <% end %>
 
+<div class="d-flex flex-wrap justify-content-around pg-3">
 <% @guitars.each do |guitar| %>
-  <h4><%= guitar.model %></h4>
-  <ul>
-    <li>
-      <% if guitar.sold == true %>
-        This guitar is sold out.
-      <% else %>
-        This guitar is available!
-      <% end %>
-    </li>
-    <li>$<%= guitar.price %></li>
-  </ul>
-  <a href="/guitars/<%= guitar.id %>/edit" id="edit-<%= guitar.id%>" class="btn btn-primary">Update Guitar></a>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= guitar.model %></h5>
+      <p class="card-text">
+        <ul>
+          <li>
+            <% if guitar.sold == true %>
+              This guitar is sold out.
+            <% else %>
+              This guitar is available!
+            <% end %>
+          </li>
+          <li>$<%= guitar.price %></li>
+        </ul>
+      </p>
+      <a href="/guitars/<%= guitar.id %>/edit" id="edit-<%= guitar.id%>" class="btn btn-primary">Update Guitar</a>
+    </div>
+  </div>
 <% end %>
+</div>

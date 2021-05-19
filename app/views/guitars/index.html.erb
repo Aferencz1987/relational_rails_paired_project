@@ -1,9 +1,14 @@
 <h1>Guitars In Stock</h1>
 <p>Our boutique shop specializes in guitars that offer the best value for experienced musicians.</p>
+
+<div class="d-flex flex-wrap justify-content-around pg-3">
 <% @guitars.each do |guitar| %>
-  <h4><%= guitar.model %></h4>
-  <ul>
-    <li>This guitar is available for $<%= guitar.price %></li>
-  </ul>
-  <a href="/guitars/<%= guitar.id %>/edit" id="edit-<%= guitar.id %>" class="btn btn-primary">Update Guitar</a>
+ <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to guitar.model, "/guitars/#{guitar.id}" %></h5>
+      <p class="card-text">This guitar is available for $<%= guitar.price %></p>
+      <a href="/guitars/<%= guitar.id %>/edit" id="edit-<%= guitar.id %>" class="btn btn-primary">Update Guitar</a>
+    </div>
+  </div>
 <% end %>
+</div>

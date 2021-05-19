@@ -6,12 +6,14 @@
 <h1>Our Suppliers</h1>
 <p>We create long-lasting partnerships with each of our guitar manufacturers.</p>
 <a href= <%=url_for(action: 'new', controller: 'manufacturers')%> >New Supplier</a>
+<div class="d-flex flex-wrap justify-content-around pg-3">
 <% @manufacturers.each do |manu| %>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title"><%= manu[:brand] %></h5>
+      <h5 class="card-title"><%= link_to manu[:brand], "/manufacturers/#{manu.id}" %></h5>
       <p class="card-text">Created at: <%= manu[:created_at] %></p>
       <a href="/manufacturers/<%= manu[:id] %>/edit" id="edit-<%= manu[:id]%>" class="btn btn-primary">Update <%= manu.brand %></a>
     </div>
   </div>
 <% end %>
+</div>
