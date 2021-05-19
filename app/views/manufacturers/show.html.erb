@@ -2,8 +2,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width-device-width, initial-scale=1">
 </head>
-<%= link_to "Update #{@manufacturer.brand}", "/manufacturers/#{@manufacturer.id}/edit" %>
-<h2><%= @manufacturer[:brand] %></h2>
+<h1><%= @manufacturer[:brand] %></h1>
 <p>
   This manufacturer is based
   <% if @manufacturer[:domestic] == true then %>
@@ -11,10 +10,10 @@
   <% else %>
     overseas.
   <% end %>
-  <%= @manufacturer[:brand] %>'s facility hasn't had a serious safety incident in <%= @manufacturer[:days_since_last_incident] %> days.
+  <%= @manufacturer[:brand] %>'s facility hasn't had a serious safety incident in <%= @manufacturer[:days_since_last_incident] %> days. <strong>Buy now! <%= @manufacturer.brand %> has <%= @num_of_guitars %> guitars.</strong>
 </p>
-<h4>Buy now! <%= @manufacturer.brand %> has <%= @num_of_guitars %> guitars.</h4>
 <a href="<%= url_for(action: 'inventory', controller: 'manufacturers') %>">Guitar Inventory</a>
 
-<h3>Danger Zone</h3>
+<h3 class="text-danger">Danger Zone</h3>
+<%= link_to "Update #{@manufacturer.brand}", "/manufacturers/#{@manufacturer.id}/edit" %>
 <%= link_to "Delete Supplier", "/manufacturers/#{@manufacturer.id}", method: :delete %>
