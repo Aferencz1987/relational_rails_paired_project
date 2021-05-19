@@ -37,28 +37,18 @@ RSpec.describe 'show page' do
     click_link("#{store.tools.count} tools")
     expect(current_path).to eq("/stores/#{store.id}/tools")
   end
+
+  it 'can update a store'
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
+    tool1 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
+    tool2 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
+
+    visit "/stores/#{store.id}"
+
+    expect(page).to have_link()
 end
 
-
-
-#[x] done
-
-#User Story 7, Parent Child Count (x2)
-
-#As a visitor
-#When I visit a parent's show page
-#I see a count of the number of children associated with this parent
-
-#[x] done
-
-#User Story 10, Parent Child Index Link
-
-#As a visitor
-#When I visit a parent show page ('/parents/:id')
-#Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
-
-#[ ] done
-
+# ???????????? updated in index spec?
 #User Story 12, Parent Update (x2)
 
 #As a visitor
@@ -83,13 +73,3 @@ end
 #Then a 'DELETE' request is sent to '/parents/:id',
 #the parent is deleted, and all child records are deleted
 #and I am redirected to the parent index page where I no longer see this parent
-
-
-#[x] done
-
-#User Story 2, Parent Show (x2)
-
-#As a visitor
-#When I visit '/parents/:id'
-#Then I see the parent with that id including the parent's attributes:
-#- data from each column that is on the parent table

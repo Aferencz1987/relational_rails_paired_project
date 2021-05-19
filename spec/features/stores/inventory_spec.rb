@@ -44,8 +44,22 @@ RSpec.describe 'inventory page' do
 
     visit "/stores/#{store.id}"
 
+    expect(page).to have_content(tool1.name)
+    expect(page).to have_content(tool2.name)
+    expect(page).to have_content(tool3.name)
+    expect(page).to have_button('sort alphabetically')
+    click_button 'sort alphabetically'
 
   end
+
+  it 'updates tools from tool index'
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
+    tool1 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
+    tool2 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
+
+    visit "/stores/#{store.id}/tools"
+
+
 end
 #User Story 16, Sort Parent's Children in Alphabetical Order by name (x2)
 
@@ -53,14 +67,16 @@ end
 #When I visit the Parent's children Index Page
 #Then I see a link to sort children in alphabetical order
 #When I click on the link
-#I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+#I'm taken back to the Parent's children Index Page where
+# I see all of the parent's children in alphabetical order
 
 #[ ] done
 
 #User Story 18, Child Update From Childs Index Page (x1)
 
 #As a visitor
-#When I visit the `child_table_name` index page or a parent `child_table_name` index page
+#When I visit the `child_table_name` index page or a parent
+# `child_table_name` index page
 #Next to every child, I see a link to edit that child's info
 #When I click the link
 #I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
@@ -84,11 +100,3 @@ end
 #Next to every child, I see a link to delete that child
 #When I click the link
 #I should be taken to the `child_table_name` index page where I no longer see that child
-
-#[x] done
-
-#User Story 5, Parent Children Index (x2)
-
-#As a visitor
-#When I visit '/parents/:parent_id/child_table_name'
-#Then I see each Child that is associated with that Parent with each Child's attributes:

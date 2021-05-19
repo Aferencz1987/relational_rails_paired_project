@@ -4,4 +4,6 @@ class Store < ApplicationRecord
   def self.created_at_order
     order(created_at: :desc)
   end
+
+  
 end
