@@ -29,16 +29,14 @@ RSpec.describe 'Stores index page' do
 
     expect(page).to have_link("new store")
     click_link "new store"
-
     expect(current_path).to eq('/stores/new')
-    # !!!!!!!!!!!!!!!!!expect(page).to have_button("Submit")
-    # !!!!!!!click_button "Submit"
+    fill_in "store[name]", with: "Terrible store"
+    fill_in "store[distance]", with: "99"
+    expect(page).to have_button("create")
+    click_button "create"
 
-    visit '/stores'
     expect(current_path).to eq('/stores')
     expect(page).to have_content("Store directory")
-    # expect(current_path).to eq('/stores')
-    # expect(page).to have_content("Store directory")
   end
 
   it 'updates store from store index page' do
@@ -53,10 +51,10 @@ RSpec.describe 'Stores index page' do
     fill_in "store[distance]", with: "5"
     choose "closed"
     click_button "update"
-    expect(current_path).to eq "/stores"
+    expect(current_path).to eq "/stores/#{store1.id}"
     expect(page).to have_content("MY aWeSOmE STORE")
     expect(page).not_to have_content("Ace")
-    save_and_open_page
+
   end
 
   it 'deletes stores from the index' do
@@ -64,18 +62,9 @@ RSpec.describe 'Stores index page' do
     store2 = Store.create!(name: 'Abe', distance: 260, open: false)
 
     visit '/stores'
-
-    expect(page).to have_link("delete #{store2.name}")
-    click_link("delete #{store2.name}")
+    expect(page).to have_link('')
+    click_on("delete #{store1.name}")
     expect(current_path).to eq "/stores"
+    expect(page).not_to have_content("#{store1.name}")
   end
 end
-
-
-#User Story 22, Parent Delete From Parent Index Page (x1)
-
-#As a visitor
-#When I visit the parent index page
-#Next to every parent, I see a link to delete that parent
-#When I click the link
-#I am returned to the Parent Index Page where I no longer see that parent
