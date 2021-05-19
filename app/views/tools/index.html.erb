@@ -1,14 +1,14 @@
 <div class="text-right">
-  <button type="button" class="btn btn-primary" style="float: right;"><a href="/tools">Tool list</a></button>
+  <button type="button" class="btn btn-danger" style="float: right;"><a href="/tools">Tool list</a></button>
 </div>
 <div class="text-right">
-  <button type="button" class="btn btn-primary" style="float: right;"><a href="/stores">Store list</a></button>
+  <button type="button" class="btn btn-danger" style="float: right;"><a href="/stores">Store list</a></button>
 </div>
 
-<h2>Look at these cool tools</h2>
+<h3>Look at these cool tools</h3>
 
 <%@tools.each do |tool| %>
-<h3><%= tool.name %></h3>
+<h4><%= tool.name %></h4>
   <ul>
     <li><%= tool.price %></li>
     <li><%= tool.on_sale %></li>

@@ -7,15 +7,26 @@ class StoresController < ApplicationController
   end
 
   def create
-    store = Store.new({
+    store = Store.create!({
       name: params[:store][:name],
       distance: params[:store][:distance],
       open: params[:store][:open]
       })
 
-    store.save
 
     redirect_to '/stores'
+  end
+
+  def new_tool
+    @store = Store.find(params[:id])
+  end
+
+  def create_tool
+    # require "pry"; binding.pry
+    store = Store.find(params[:id])
+    store.tools.create!(name: params[:name], price: params[:price], on_sale: params[:on_sale])
+
+    redirect_to "/stores/#{store.id}/tools"
   end
 
   def edit
@@ -43,4 +54,16 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
     @tools = @store.tools
   end
+
+  def destroy
+    Store.destroy(params[:id])
+    # Tool.destroy where: params[:store_id]
+    redirect_to "/stores"
+  end
+
+  # def destroy_tool ##all done now in store model
+  #   Tool.destroy(params[:id])
+  #
+  #   redirect_to "/stores/#{store.id}"
+  # end
 end

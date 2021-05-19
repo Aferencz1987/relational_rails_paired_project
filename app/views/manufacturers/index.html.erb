@@ -13,6 +13,7 @@
       <h5 class="card-title"><%= link_to manu[:brand], "/manufacturers/#{manu.id}" %></h5>
       <p class="card-text">Created at: <%= manu[:created_at] %></p>
       <a href="/manufacturers/<%= manu[:id] %>/edit" id="edit-<%= manu[:id]%>" class="btn btn-primary">Update <%= manu.brand %></a>
+      <%= link_to "Delete #{manu.brand}", "/manufacturers/#{manu.id}", method: :delete, id: "delete-#{manu.id}" %>
     </div>
   </div>
 <% end %>

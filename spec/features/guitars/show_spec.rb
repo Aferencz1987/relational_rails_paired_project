@@ -48,15 +48,22 @@ RSpec.describe 'Guitar information' do
     expect(page).to have_content "1963 SG"
     expect(page).not_to have_content "An Old SG"
   end
-#[ ] done
 
-#User Story 20, Child Delete (x2)
+  it 'can delete a guitar record' do
+    #[x] done
 
-#As a visitor
-#When I visit a child show page
-#Then I see a link to delete the child "Delete Child"
-#When I click the link
-#Then a 'DELETE' request is sent to '/child_table_name/:id',
-#the child is deleted,
-#and I am redirected to the child index page where I no longer see this child
+    #User Story 20, Child Delete (x2)
+
+    #As a visitor
+    #When I visit a child show page
+    #Then I see a link to delete the child "Delete Child"
+    #When I click the link
+    #Then a 'DELETE' request is sent to '/child_table_name/:id',
+    #the child is deleted,
+    #and I am redirected to the child index page where I no longer see this child
+    visit "/guitars/#{@sg.id}"
+    click_link "Delete"
+    expect(current_path).to eq "/guitars"
+    expect(page).not_to have_content @sg.model
+  end
 end

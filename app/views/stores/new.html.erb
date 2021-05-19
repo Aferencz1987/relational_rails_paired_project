@@ -1,7 +1,7 @@
 <form action="/stores" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <b><i>Enter a new store:</i></b><br/>
-  <p>Store name:</p>
+  <h3>Store name:</h3>
   <input type='text' name='store[name]'/><br/>
   <p>Distance from "The Turing Basment":</p>
   <input type='text' name='store[distance]'/><br/>
@@ -10,5 +10,5 @@
   <label for='store[open]'>Open</label><br/><br/>
   <input type="radio" name='store[open]' value= "false">
   <label for='store[open]'>Closed</label><br/><br/>
-  <input type='submit'/>
+  <input type='submit'id='create'/>
 </form>

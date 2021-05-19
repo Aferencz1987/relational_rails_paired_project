@@ -106,13 +106,20 @@ RSpec.describe 'Manufacturers guitar inventory' do
     expect(page).to have_content "Stratocaster"
     expect(page).not_to have_content "Telecaster"
   end
-#[ ] done
 
-#User Story 23, Child Delete From Childs Index Page (x1)
+  it 'can delete it\'s own guitars' do
+    #[x] done
 
-#As a visitor
-#When I visit the `child_table_name` index page or a parent `child_table_name` index page
-#Next to every child, I see a link to delete that child
-#When I click the link
-#I should be taken to the `child_table_name` index page where I no longer see that child
+    #User Story 23, Child Delete From Childs Index Page (x1)
+
+    #As a visitor
+    #When I visit the `child_table_name` index page or a parent `child_table_name` index page
+    #Next to every child, I see a link to delete that child
+    #When I click the link
+    #I should be taken to the `child_table_name` index page where I no longer see that child
+    visit "/manufacturers/#{@id}/guitars"
+    click_on "delete-#{@strat.id}"
+    expect(current_path).to eq "/manufacturers/#{@id}/guitars"
+    expect(page).not_to have_content @strat.model
+  end
 end

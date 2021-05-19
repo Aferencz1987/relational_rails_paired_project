@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Manufacturer info' do
 
   before(:all) do
+    Guitar.destroy_all
+    Manufacturer.destroy_all
     @fender = Manufacturer.create(brand: "FENDER", domestic: false, days_since_last_incident: 222)
-    @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
-    @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
+    @strat = @fender.guitars.create(model: "Stratocaster", price: 1122.99, sold: false)
+    @tele = @fender.guitars.create(model: "Telecaster", price: 1499.99, sold: true)
     @id = @fender.id.to_s
   end
 
@@ -76,15 +78,24 @@ RSpec.describe 'Manufacturer info' do
     expect(page).not_to have_content "FENDER"
   end
 
-#[ ] done
+  it 'deletes a manufacturer' do
+    #[x] done
 
-#User Story 19, Parent Delete (x2)
+    #User Story 19, Parent Delete (x2)
 
-#As a visitor
-#When I visit a parent show page
-#Then I see a link to delete the parent
-#When I click the link "Delete Parent"
-#Then a 'DELETE' request is sent to '/parents/:id',
-#the parent is deleted, and all child records are deleted
-#and I am redirected to the parent index page where I no longer see this parent
+    #As a visitor
+    #When I visit a parent show page
+    #Then I see a link to delete the parent
+    #When I click the link "Delete Parent"
+    #Then a 'DELETE' request is sent to '/parents/:id',
+    #the parent is deleted, and all child records are deleted
+    #and I am redirected to the parent index page where I no longer see this parent
+    visit "/manufacturers/#{@fender.id}"
+    click_link "Delete Supplier"
+    expect(current_path).to eq '/manufacturers'
+    expect(page).not_to have_content @fender.brand
+    visit "/guitars"
+    expect(page).not_to have_content @strat.model
+    expect(page).not_to have_content @tele.model
+  end
 end

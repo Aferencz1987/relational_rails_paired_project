@@ -8,6 +8,7 @@
       <h5 class="card-title"><%= link_to guitar.model, "/guitars/#{guitar.id}" %></h5>
       <p class="card-text">This guitar is available for $<%= guitar.price %></p>
       <a href="/guitars/<%= guitar.id %>/edit" id="edit-<%= guitar.id %>" class="btn btn-primary">Update Guitar</a>
+      <%= link_to "Delete", "/guitars/?id=#{guitar.id}", method: :delete, id: "delete-#{guitar.id}" %>
     </div>
   </div>
 <% end %>

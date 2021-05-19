@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   patch '/stores/:id', to: 'stores#update'
   get '/tools', to: 'tools#index'
   get '/tools/:id', to: 'tools#show'
+  get 'stores/:id/tools/edit', to: 'tools#edit'
+  patch '/stores/:id/tools', to: 'tools#update'
+  get '/stores/:id/tools/new', to: 'stores#new_tool'
+  post '/stores/:id/tools', to: 'stores#create_tool'
+  delete '/stores/:id', to: 'stores#destroy'
+
   get '/manufacturers', to: 'manufacturers#index'
   get '/manufacturers/new', to: 'manufacturers#new'
   get '/manufacturers/:id', to: 'manufacturers#show'
@@ -20,8 +26,10 @@ Rails.application.routes.draw do
   post '/manufacturers/', to: 'manufacturers#create'
   get '/manufacturers/:id/edit', to: 'manufacturers#edit'
   patch '/manufacturers/:id', to: 'manufacturers#update'
+  delete '/manufacturers/:id', to: 'manufacturers#delete'
   get '/guitars', to: 'guitars#index'
   get '/guitars/:id', to: 'guitars#show'
+  delete '/guitars', to: 'guitars#delete'
   get '/guitars/:id/edit', to: 'guitars#edit'
   patch '/guitars/:id', to: 'guitars#create'
 end

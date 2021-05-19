@@ -63,15 +63,20 @@ RSpec.describe 'Guitars index page' do
   end
 
 
-#[ ] done
+  it 'can delete guitar records' do
+    #[x] done
 
-#User Story 23, Child Delete From Childs Index Page (x1)
+    #User Story 23, Child Delete From Childs Index Page (x1)
 
-#As a visitor
-#When I visit the `child_table_name` index page or a parent `child_table_name` index page
-#Next to every child, I see a link to delete that child
-#When I click the link
-#I should be taken to the `child_table_name` index page where I no longer see that child
-
+    #As a visitor
+    #When I visit the `child_table_name` index page or a parent `child_table_name` index page
+    #Next to every child, I see a link to delete that child
+    #When I click the link
+    #I should be taken to the `child_table_name` index page where I no longer see that child
+    visit "/guitars"
+    click_on "delete-#{@sg.id}"
+    expect(current_path).to eq "/guitars"
+    expect(page).not_to have_content @sg.model
+  end
 
 end
