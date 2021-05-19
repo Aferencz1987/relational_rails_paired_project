@@ -1,6 +1,6 @@
 class ToolsController < ApplicationController
   def index
-    @tools = Tool.all
+    @tools = Tool.discounted
   end
 
   def show
@@ -13,14 +13,19 @@ class ToolsController < ApplicationController
 
   def update
     @tool = Tool.find(params[:id])
-    @store.update({
-      name: params[:tool][:name],
-      price: params[:tool][:price],
-      on_sale: params[:tool][:on_sale]
+    @tool.update({
+      name: params[:name],
+      price: params[:price],
+      on_sale: params[:on_sale]
       })
 
       @tool.save
-
       redirect_to "/tools"
+  end
+
+  def destroy
+    Tool.destroy(params[:id])
+
+    redirect_to "/tools"
   end
 end

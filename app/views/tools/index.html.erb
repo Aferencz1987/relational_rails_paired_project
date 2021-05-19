@@ -5,12 +5,25 @@
   <button type="button" class="btn btn-danger" style="float: right;"><a href="/stores">Store list</a></button>
 </div>
 
-<h3>Look at these cool tools</h3>
 
-<%@tools.each do |tool| %>
-<h4><%= tool.name %></h4>
-  <ul>
-    <li><%= tool.price %></li>
-    <li><%= tool.on_sale %></li>
-  </ul>
-<% end %>
+  <h3> Look at all these tools</h3>
+
+
+  <%@tools.each do |tool| %>
+  <h4><%= tool.name %></h4>
+    <ul>
+      <li>$ <%= tool.price %></li>
+      <li><% if tool.on_sale == true then %>
+        Yay! On sale!
+        <% else %>
+        Sorry, full price for you.
+      <% end %></li>
+    </ul>
+    <a href=<%= "/tools/#{tool.id}/edit"%>>update <%= tool.name %></a>
+    <br>
+    <%= link_to 'Delete', "/tools/#{tool.id}", method: :delete %>
+    <br>
+  <% end %>
+
+  <br><br>
+<p> If you see no tool, there is no sale. Click the Store list to go checkout other cool tools! </p>

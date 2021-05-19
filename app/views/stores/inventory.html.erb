@@ -8,18 +8,22 @@
 <h3><%= @store.name %>!!!</h3>
 
   <% @tools.each do |tool| %>
-  <h3><%= tool.name %></h3>
+  <a href=<%= "/stores/#{@store.id}/tools/#{tool.id}"%>> <%= tool.name %></a>
   <ul>
-      <li><%= tool.price %></li>
+      <li>$ <%= tool.price %></li>
       <li><% if tool.on_sale == true then %>
         Yay! On sale!
         <% else %>
         Sorry, full price for you.
       <% end %></li>
   </ul>
-  <a href=<%= "/stores/#{@store.id}/tools/edit"%>>update <%= tool.name %></a>
+  <a href=<%= "/tools/#{tool.id}/edit"%>>update <%= tool.name %></a>
+  <br>
   <% end %>
 <br>
 <br>
 
 <a href=<%= "/stores/#{@store.id}/tools/new"%>>Add new tool</a>
+<br>
+<button type="button" ><a href=<%= "/stores/#{@store.id}/tools/sort"%>>Sort alphabetically</a></button>
+<button type="button" ><a href=<%= "/stores/#{@store.id}/tools"%>>Sort by creation</a></button>

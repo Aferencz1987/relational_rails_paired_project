@@ -22,7 +22,6 @@ class StoresController < ApplicationController
   end
 
   def create_tool
-    # require "pry"; binding.pry
     store = Store.find(params[:id])
     store.tools.create!(name: params[:name], price: params[:price], on_sale: params[:on_sale])
 
@@ -52,18 +51,16 @@ class StoresController < ApplicationController
 
   def inventory
     @store = Store.find(params[:id])
-    @tools = @store.tools
+    if params[:sort]
+      @tools = @store.tools.sort_alphabetically
+    else
+      @tools = @store.tools
+    end
   end
 
   def destroy
     Store.destroy(params[:id])
-    # Tool.destroy where: params[:store_id]
+
     redirect_to "/stores"
   end
-
-  # def destroy_tool ##all done now in store model
-  #   Tool.destroy(params[:id])
-  #
-  #   redirect_to "/stores/#{store.id}"
-  # end
 end
