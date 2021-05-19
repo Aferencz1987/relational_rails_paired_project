@@ -1,43 +1,52 @@
 require 'rails_helper'
 
 RSpec.describe 'inventory page' do
-  it 'shows tools her store' do
+  it 'shows tools per store' do
     store = Store.create!(name: 'Ace', distance: 20, open: true)
-    tool1 = create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
-    tool2 = create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
+    tool1 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
+    tool2 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
 
     visit "/stores/#{store.id}/tools"
 
     expect(page).to have_content(tool1.name)
-    expect(page).to have_content(tool1.distance)
+    expect(page).to have_content(tool1.price)
     expect(page).to have_content("Sorry, full price for you.")
     expect(page).to have_content(tool2.name)
-    expect(page).to have_content(tool2.distance)
+    expect(page).to have_content(tool2.price)
     expect(page).to have_content("Yay! On sale!")
   end
 
+  it 'creates a tool for a store' do
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
+    tool1 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
+    tool2 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
 
+    visit "/stores/#{store.id}"
+    expect(page).to have_link("add tool")
+    click_link ("add tool")
+    expect(current_path).to eq ("/stores/#{store.id}/tools/new")
+    expect(page).to have_content("Add tool to #{store.name}")
+
+    fill_in :name, with: "test"
+    fill_in :price, with: "99"
+    # choose  "true"
+    expect(page).to have_button("Add tool")
+    click_button "Add tool"
+    expect(current_path).to eq("/stores/#{store.id}/tools")
+    expect(page).to have_content("99")
+  end
+
+  it 'sorts each stores tools by alphabet' do
+    store = Store.create!(name: 'Ace', distance: 20, open: true)
+    tool1 = Tool.create!(name: "Steel Hammer", price: 25.00, on_sale: false, store_id: store.id)
+    tool2 = Tool.create!(name: "Handy Dandy Screwdriver", price: 11.00, on_sale: true, store_id: store.id)
+    tool3 = Tool.create!(name: "Table Saw for magicians", price: 159.00, on_sale: false, store_id: store.id)
+
+    visit "/stores/#{store.id}"
+
+
+  end
 end
-
-
-
-#[ ] done
-
-#User Story 13, Parent Child Creation (x2)
-
-#As a visitor
-#When I visit a Parent Childs Index page
-#Then I see a link to add a new adoptable child for that parent "Create Child"
-#When I click the link
-#I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
-#When I fill in the form with the child's attributes:
-#And I click the button "Create Child"
-#Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
-#a new child object/row is created for that parent,
-#and I am redirected to the Parent Childs Index page where I can see the new child listed
-
-#[ ] done
-
 #User Story 16, Sort Parent's Children in Alphabetical Order by name (x2)
 
 #As a visitor
