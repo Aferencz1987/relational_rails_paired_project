@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   post '/manufacturers/', to: 'manufacturers#create'
   get '/manufacturers/:id/edit', to: 'manufacturers#edit'
   patch '/manufacturers/:id', to: 'manufacturers#update'
+  delete '/manufacturers/:id', to: 'manufacturers#delete'
   get '/guitars', to: 'guitars#index'
   get '/guitars/:id', to: 'guitars#show'
+  delete '/guitars', to: 'guitars#delete'
   get '/guitars/:id/edit', to: 'guitars#edit'
   patch '/guitars/:id', to: 'guitars#create'
 end

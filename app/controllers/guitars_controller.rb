@@ -22,4 +22,13 @@ class GuitarsController < ApplicationController
     redirect_to '/guitars'
   end
 
+  def delete
+    guitar = Guitar.find(params[:id])
+    guitar.destroy
+    if params[:supplier]
+      redirect_to "/manufacturers/#{params[:supplier]}/guitars"
+    else
+      redirect_to '/guitars'
+    end
+  end
 end

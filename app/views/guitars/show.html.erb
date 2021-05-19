@@ -9,4 +9,5 @@
     <% end %>
   </li>
   <%= link_to "Update Guitar", "/guitars/#{@guitar.id}/edit" %>
+  <%= link_to "Delete", "/guitars/?id=#{@guitar.id}", method: :delete %>
 </ul>

@@ -86,14 +86,19 @@ RSpec.describe 'Manufacturer index page' do
     expect(page).not_to have_content "Gibon"
   end
 
-#[ ] done
+  it 'can delete a record for index page' do
+    #[x] done
 
-#user story 22, parent delete from parent index page (x1)
+    #user story 22, parent delete from parent index page (x1)
 
-#as a visitor
-#When I visit the parent index page
-#Next to every parent, I see a link to delete that parent
-#When I click the link
-#I am returned to the Parent Index Page where I no longer see that parent
+    #as a visitor
+    #When I visit the parent index page
+    #Next to every parent, I see a link to delete that parent
+    #When I click the link
+    #I am returned to the Parent Index Page where I no longer see that parent
+    visit '/manufacturers'
+    click_on "delete-#{@gibson.id}"
+    expect(current_path).to eq '/manufacturers'
+    expect(page).not_to have_content @gibson.brand
+  end
 end
-
