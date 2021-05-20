@@ -10,7 +10,7 @@
 
 
   <%@tools.each do |tool| %>
-  <h4><%= tool.name %></h4>
+  <h4><a href=<%= "/tools/#{tool.id}"%>><%= tool.name %></a></h4>
     <ul>
       <li>$ <%= tool.price %></li>
       <li><% if tool.on_sale == true then %>

@@ -19,6 +19,8 @@
   </ul>
   <a href=<%= "/tools/#{tool.id}/edit"%>>update <%= tool.name %></a>
   <br>
+  <%= link_to 'Delete', "/stores/#{@store.id}/tools/#{tool.id}", method: :delete %>
+  <br>
   <% end %>
 <br>
 <br>

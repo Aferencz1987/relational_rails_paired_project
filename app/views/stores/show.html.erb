@@ -19,4 +19,6 @@
 
 <a href=<%="/stores/#{@store.id}/tools/new"%>>add tool</a>
 <br><br>
+<button type="button"><a href=<%= "/stores/#{@store.id}/edit" %>>update <%=@store.name%> </a></button>
+
 <%= button_to "Delete #{@store.name}", "/stores/#{@store.id}", method: :delete %>

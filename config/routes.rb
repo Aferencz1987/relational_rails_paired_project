@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   patch '/stores/:id', to: 'stores#update'
   get '/tools', to: 'tools#index'
   get '/tools/:id', to: 'tools#show'
-  delete '/stores/:id/tools/:id', to: 'tools#destroy'
+  delete '/tools/:id', to: 'tools#destroy'
   get '/tools/:id/edit', to: 'tools#edit'
   patch '/tools/:id', to: 'tools#update'
   post '/stores/:id/tools', to: 'stores#create_tool'
   delete '/stores/:id', to: 'stores#destroy'
+  delete '/stores/:id/tools/:id', to: 'tools#destroy'
 
   get '/manufacturers', to: 'manufacturers#index'
   get '/manufacturers/new', to: 'manufacturers#new'
