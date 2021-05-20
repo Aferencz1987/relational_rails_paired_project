@@ -35,6 +35,7 @@ RSpec.describe 'Stores index page' do
     expect(current_path).to eq('/stores/new')
     fill_in "store[name]", with: "Terrible store"
     fill_in "store[distance]", with: "99"
+    choose  "on_sale_true"
     expect(page).to have_button("create")
     click_button "create"
 
