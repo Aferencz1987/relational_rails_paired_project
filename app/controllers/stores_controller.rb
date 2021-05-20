@@ -53,6 +53,9 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
     if params[:sort]
       @tools = @store.tools.sort_alphabetically
+    elsif params[:price_cap]
+      price = params[:price_cap].to_i
+      @tools = @store.fancy_tools(price)
     else
       @tools = @store.tools
     end

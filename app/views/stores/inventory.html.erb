@@ -29,3 +29,12 @@
 <br>
 <button type="button" ><a href=<%= "/stores/#{@store.id}/tools/sort"%>>Sort alphabetically</a></button>
 <button type="button" ><a href=<%= "/stores/#{@store.id}/tools"%>>Sort by creation</a></button>
+
+
+
+<%= form_with url: "/stores/#{@store.id}/tools/", method: :get, local: true do |form| %>
+
+  <%= form.label :price_cap %><br>
+  <%= form.text_field :price_cap %><br>
+  <%= form.submit 'create price cap'%>
+<% end %>
