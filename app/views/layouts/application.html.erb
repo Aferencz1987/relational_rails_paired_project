@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-light" href="/">Wood & Stuff</a>
+        <div class="navbar-nav">
+          <a class="nav-link text-light" href="/tools">Tools</a>
+          <a class="nav-link text-light" href="/guitars">Guitars</a>
+          <a class="nav-link text-light" href="/stores">Stores</a>
+          <a class="nav-link text-light" href="/manufacturers">Manufacturers</a>
+        </div>
+      </div>
+    </nav> 
+    <div class="container-fluid p-4">
+      <%= yield %>
+    </div>
+    <div class="d-flex justify-content-around bg-dark">
+      <h6 class="p-3 text-light">Created by Alex F and Jamison G</h6>
+      <p class="p-3 text-light">©2021</p>
+    </div>
   </body>
 </html>
