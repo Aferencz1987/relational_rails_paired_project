@@ -1,3 +1,6 @@
+###THIS IS DONE##
+
+
 require 'rails_helper'
 
 RSpec.describe 'Stores index page' do
@@ -32,6 +35,7 @@ RSpec.describe 'Stores index page' do
     expect(current_path).to eq('/stores/new')
     fill_in "store[name]", with: "Terrible store"
     fill_in "store[distance]", with: "99"
+    choose  "on_sale_true"
     expect(page).to have_button("create")
     click_button "create"
 
@@ -46,7 +50,7 @@ RSpec.describe 'Stores index page' do
 
     expect(page).to have_link("update #{store1.name}")
     click_link "update #{store1.name}"
-    expect(current_path).to eq "/stores/#{store1.id}/edit"
+    expect(current_path).to eq "/stores/#{store1.id}/edit" #show and index both use this route
     fill_in "store[name]", with: "MY aWeSOmE STORE"
     fill_in "store[distance]", with: "5"
     choose "closed"

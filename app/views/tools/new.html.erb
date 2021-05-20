@@ -1,5 +1,5 @@
-<h3>Add tool to <%="#{@store.name}" %></h3>
-<%= form_with url: "/stores/#{@store.id}/tools", method: :post, local: true do |form| %>
+<h3>Create a new tool!</h3>
+<%= form_with url: "/tools", method: :post, local: true do |form| %>
 
   <%= form.label :name%><br>
   <%= form.text_field :name %><br>

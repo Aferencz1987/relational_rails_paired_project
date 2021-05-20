@@ -5,7 +5,7 @@ class Store < ApplicationRecord
     order(created_at: :desc)
   end
 
-  def over_price(price_cap)
-    self.tools.where("price > #{price_cap}")
+  def fancy_tools(cutoff)
+    self.tools.where("price > #{cutoff}")
   end
 end

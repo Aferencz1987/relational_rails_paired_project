@@ -1,7 +1,8 @@
-<h3>Add tool to <%="#{@store.name}" %></h3>
-<%= form_with url: "/stores/#{@store.id}/tools", method: :post, local: true do |form| %>
 
-  <%= form.label :name%><br>
+<h3>Edit <%="#{@tool.name}" %></h3>
+<%= form_with url: "/tools/#{@tool.id}", method: :patch, local: true do |form| %>
+
+  <%= form.label :name %><br>
   <%= form.text_field :name %><br>
   <%= form.label :price %><br>
   <%= form.number_field :price%><br><br>
@@ -10,5 +11,5 @@
   <%= form.radio_button :on_sale, true %><br>
   <%= form.label :on_sale, "full price" %>
   <%= form.radio_button :on_sale, false %><br><br>
-  <%= form.submit 'Add tool'%>
+  <%= form.submit 'Update tool'%>
 <% end %>
